@@ -1,0 +1,13 @@
+mandatory/*/*.o
+mandatory/*.o
+mandatory/main.o
+mandatory/*/*.swp
+mandatory/*.swp
+mandatory/*/*.swo
+mandatory/*.swo
+*.swp
+*.swo
+cub3D
+libft/libft.a
+libft/objs
+.nfs*
