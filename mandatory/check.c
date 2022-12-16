@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 20:44:24 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/16 19:00:01 by mcloarec         ###   ########.fr       */
+/*   Created: 2022/12/16 14:56:14 by mcloarec          #+#    #+#             */
+/*   Updated: 2022/12/16 16:23:01 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-int	main(int argc, char **argv)
+int	check_file_name(char *str)
 {
-	t_data	data;
-	if (argc != 2)
-		ft_error(".cub file not found");
-	if (check_file_name(argv[1]) == FALSE)
-		ft_error("wrong format");
-	init_map(&data);
-	initialize_map(&data, argv[1]);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (str[i] != '.')
+		i++;
+	if (i == 0 && str[i + 1] != '.')
+		return (FALSE);
+	if (!(ft_strnstr(str, ".cub", ft_strlen(str))))
+		return (FALSE);
+	else
+		return (TRUE);
 }
