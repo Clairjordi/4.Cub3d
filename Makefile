@@ -6,7 +6,7 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 16:08:31 by clorcery          #+#    #+#              #
-#    Updated: 2022/12/15 18:09:04 by clorcery         ###   ########.fr        #
+#    Updated: 2022/12/16 10:45:17 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,27 +35,27 @@ MLX = ./minilibx/libmlx.a
 all: ${NAME}
 
 .c.o:
-	clang ${FLAGS} -c $< -o $@
+	@clang ${FLAGS} -c $< -o $@
 
 ${LIBFT}:
-		make -C ./libft 
+		@make -C ./libft --no-print-directory
 
 ${MLX}:
-		make -C ./minilibx
+		@make -C ./minilibx --no-print-directory -s
 
 ${NAME}: ${OBJS} ${LIBFT} ${MLX}
-		clang ${FLAGS} ${OBJS} ${LIBFT} ${MLX} ${FLAGSMLX} -o ${NAME}
+		@clang ${FLAGS} ${OBJS} ${LIBFT} ${MLX} ${FLAGSMLX} -o ${NAME}
 		@echo ${GREEN}"compilation complete"${EOC}
 
 clean:
-		make -C ./libft/ clean
-		make -C ./minilibx clean
-		rm -rf ${OBJS}
+		@make -C ./libft clean --no-print-directory
+		@make -C ./minilibx clean --no-print-directory -s
+		@rm -rf ${OBJS}
 		@echo ${YELLOW}"clean ok"
 
 fclean: clean
-		make -C ${LIBFT} fclean
-		rm -rf ${NAME}
+		@rm -rf ${LIBFT} 
+		@rm -rf ${NAME}
 		@echo "fclean ok"${EOC}
 
 re: fclean all
