@@ -6,14 +6,10 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:40:25 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/16 14:42:12 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/17 09:47:14 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	putstr_error(char *s)
-{
-	write(2, "Error\n", 6);
-	write(2, s, ft_strlen(s));
-}
+
