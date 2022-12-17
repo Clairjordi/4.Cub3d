@@ -5,6 +5,10 @@ mandatory/*/*.swp
 mandatory/*.swp
 mandatory/*/*.swo
 mandatory/*.swo
+minilibx/obj/*.o
+minilibx/test/*
+minilibx/libmlx.a
+minilibx/libmlx_Linux.a
 *.swp
 *.swo
 cub3D
