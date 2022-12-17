@@ -6,7 +6,7 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 16:08:31 by clorcery          #+#    #+#              #
-#    Updated: 2022/12/16 20:57:26 by clorcery         ###   ########.fr        #
+#    Updated: 2022/12/17 19:18:09 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRCS = mandatory/main.c \
 	   mandatory/init.c \
 	   mandatory/map.c \
 	   mandatory/exit.c \
-	   mandatory/recup_map.c
+	   mandatory/recup_map.c \
+	   mandatory/recup_identifier.c \
+	   mandatory/recup_identifier_bis.c
 
 OBJS = ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:27:04 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/16 21:49:27 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/17 11:05:11 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static void	ft_init_identifier(t_data *data)
 {
-	data->ident.no = NULL;
-	data->ident.so = NULL;
-	data->ident.we = NULL;
-	data->ident.ea = NULL;
-	data->ident.floor = NULL;
-	data->ident.ceiling = NULL;
+	data->id.no = NULL;
+	data->id.so = NULL;
+	data->id.we = NULL;
+	data->id.ea = NULL;
+	data->id.f = NULL;
+	data->id.c = NULL;
 }
 
 static void	ft_init_map(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/16 21:48:29 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/17 19:11:35 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ typedef struct s_identifier
 	char	*so;
 	char	*we;
 	char	*ea;
-	char	*floor;
-	char	*ceiling;
-}	t_ident;
+	int		*f;
+	int		*c;
+}	t_id;
 
 typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
 	char	**file_split;
-	t_ident	ident;
+	t_id	id;
 	t_map	map;
 }	t_data;
 
@@ -61,7 +61,16 @@ void	initialize_map(t_data *data, char *str);
 /*recup_map*/
 void	ft_recup_tab_file(t_data *data, char *arg);
 
+/*recup_identifier*/
+void	ft_recup_identifier(t_data *data);
+
+/*recup_identifier_bis*/
+void    ft_add_id(t_data *data, char *id, char c);
+
 /*Utils*/
+char    *ft_strdup_cub(t_data *data, char *s);
+long long	ft_atoll_cub(t_data *data, char *nptr);
+char		*ft_charjoin(t_data *data, char *s1, char c);
 
 /*exit*/
 void	ft_free_map(t_data *data);

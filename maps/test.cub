@@ -1,10 +1,10 @@
-NO ./sprite
-SO ./sprite
-EA ./sprite
-WE ./sprite
+NO ./sprites_solong/grass3.xpm
+SO ./sprites_solong/grass3.xpm
+EA ./sprites_solong/bush.xpm
+WE ./sprites_solong/item1.xpm
 
 F 220,100,0
-C 225,30,0
+C 225,0,1
 
 
       111111
