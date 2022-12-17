@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:30:17 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/16 19:03:36 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/17 18:01:06 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ void	initialize_map(t_data *data, char *str)
 	if (fd < 0)
 		ft_error("Cannot read file");
 	data->map.lines = get_lines(fd);
+	printf("lines = %d\n", data->map.lines);
 	close(fd);
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
 		ft_error("Cannot read file");
 	data->map.columns = get_columns(fd);
+	printf("col = %d\n", data->map.columns);
 	close(fd);
 }

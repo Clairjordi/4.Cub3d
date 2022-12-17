@@ -6,9 +6,16 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:40:25 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/17 09:48:51 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/17 13:29:53 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
+int	ft_isspace(char c)
+{
+	if (c == 32 || c == '\f' || c == '\n' || c == '\r' || c == '\t'
+		|| c == '\v')
+		return (0);
+	return (1);
+}
