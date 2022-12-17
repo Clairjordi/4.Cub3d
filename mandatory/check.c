@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:56:14 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/17 19:09:35 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/17 19:14:56 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_up_down_walls(t_data *data, char **s, int *j)
 				ft_error_free(data, "Map is not surrounded by walls");
 			(*j)++;
 		}
-		if ((*s)[*j] != '\0')
+		if ((*s)[*j] != '\0' && (*s)[*j] != '0')
 			(*j)++;
 		else if ((*s)[*j] == '0')
 			ft_error_free(data, "Map is not surrounded by walls");
@@ -58,6 +58,8 @@ void	check_side_walls(t_data *data, char **s, int *j)
 	if ((*s)[*j - 1] != '1' && (*s)[*j] != '\0')
 		ft_error_free(data, "Map is not surrounded by walls");
 }
+
+/*ca marche pas sur la derniere ligne de la map test2*/
 
 void	check_walls(t_data *data)
 {
