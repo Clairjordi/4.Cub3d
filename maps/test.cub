@@ -1,10 +1,10 @@
 NO ./sprites_solong/grass3.xpm
 SO ./sprites_solong/grass3.xpm
 EA ./sprites_solong/bush.xpm
-WE ./sprites_solong/item1.xpm
+WE ./sprites_solong/bush.xpm
 
-F 220,100,0
-C 225,0,1
+C 1,255,0
+F 255,1,0
 
 
       111111
@@ -12,49 +12,5 @@ C 225,0,1
  10000000001
 100000110001
 101010111101
-1111111  111 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+1111111  111      
+   11  

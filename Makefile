@@ -6,7 +6,7 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 16:08:31 by clorcery          #+#    #+#              #
-#    Updated: 2022/12/17 19:18:09 by clorcery         ###   ########.fr        #
+#    Updated: 2022/12/18 17:22:29 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,18 @@ EOC:="\033[0;0m"
 # /* ~~~~~~~~~~~~~~~~~ */
 
 SRCS = mandatory/main.c \
-	   mandatory/check.c \
+	   mandatory/check_recup_value/check.c \
+	   mandatory/check_recup_value/recup_identifier.c \
+	   mandatory/check_recup_value/recup_identifier_add_value.c \
+	   mandatory/check_recup_value/recup_identifier_bis.c \
+	   mandatory/check_recup_value/utils_id.c \
+	   mandatory/check_recup_value/utils_id_bis.c \
 	   mandatory/utils.c \
 	   mandatory/init.c \
 	   mandatory/map.c \
-	   mandatory/exit.c \
 	   mandatory/recup_map.c \
-	   mandatory/recup_identifier.c \
-	   mandatory/recup_identifier_bis.c
+	   mandatory/free/free.c \
+	   mandatory/free/exit.c
 
 OBJS = ${SRCS:.c=.o}
 

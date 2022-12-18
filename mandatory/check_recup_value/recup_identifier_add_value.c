@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   recup_identifier_bis.c                             :+:      :+:    :+:   */
+/*   recup_identitifier_add_value.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 18:54:40 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/17 19:47:28 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:10:09 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 static void	ft_add_id_c_f_ter(t_data *data, int *tmp, int j, char *val)
 {
@@ -59,31 +59,13 @@ static void	ft_add_id_c_f(t_data *data, char *id, int *tmp)
 	}
 }
 
-static void	ft_add_path_id(t_data *data, char *id, char c)
-{
-	if (c == 'N')
-	{
-		data->id.no = ft_strdup_cub(data, id);
-	}
-	if (c == 'S')
-	{
-		data->id.so = ft_strdup_cub(data, id);
-	}
-	if (c == 'W')
-	{
-		data->id.we = ft_strdup_cub(data, id);
-	}
-	if (c == 'E')
-	{
-		data->id.ea = ft_strdup_cub(data, id);
-	}
-}
-
 void	ft_add_id(t_data *data, char *id, char c)
 {
 	ft_add_path_id(data, id, c);
 	if (c == 'F')
 	{
+		if (data->id.f != NULL)
+			ft_error_free(data, "Double identifier detected");
 		data->id.f = malloc(sizeof(int) * 3);
 		if (!data->id.f)
 			ft_error_free(data, "Malloc failed");
@@ -91,6 +73,8 @@ void	ft_add_id(t_data *data, char *id, char c)
 	}
 	if (c == 'C')
 	{
+		if (data->id.c != NULL)
+			ft_error_free(data, "Double identifier detected");
 		data->id.c = malloc(sizeof(int) * 3);
 		if (!data->id.c)
 			ft_error_free(data, "Malloc failed");

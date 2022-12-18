@@ -6,11 +6,11 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:02:52 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/17 19:41:12 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/18 17:28:29 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 void	ft_check_first_letter(t_data *data, char c)
 {
@@ -31,51 +31,36 @@ void	ft_check_name_id(t_data *data, char *s)
 		ft_error_free(data, "Invalid name identifier");
 	if (s[0] == 'S' && ft_strncmp("SO", s, 2) != 0)
 		ft_error_free(data, "Invalid name identifier");
+	//utiliser isspace
 	if (s[0] == 'F' && s[1] != ' ')
 		ft_error_free(data, "Invalid name identifier");
+	//utiliser isspace
 	if (s[0] == 'C' && s[1] != ' ')
 		ft_error_free(data, "Invalid name identifier");
 }
 
-static void	ft_check_value_c_f(t_data *data, char *s)
+void	ft_check_id_bottom_file(t_data *data)
 {
 	int	i;
+	int	j;
 
-	i = 2;
-	while (s[i])
-	{
-		if (s[2] == ',')
-			ft_error_free(data, "Invalid RGB form");
-		if (s[i] != ',' && ft_isdigit(s[i]) == 0)
-			ft_error_free(data, "Invalid RGB form");
-		if (s[i] == ',' && (s[i + 1] == ',' || s[i + 1] == '\0'))
-			ft_error_free(data, "Invalid RGB form");
+	j = 0;
+	i = 0;
+	while (data->file_split[i + 1])
 		i++;
-	}
-}
-
-void	ft_check_value_id_and_add(t_data *data, char *s, char c)
-{
-	char	*value;
-	int		fd;
-	char	n;
-
-	value = NULL;
-	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+	//utiliser isspace
+	if (data->file_split[i][0] != ' ' && data->file_split[i][0] != '1')
+		ft_error_free(data, "Map Invalid");
+	if (data->file_split[i][0] == ' ')
 	{
-		value = ft_strchr(s, '.');
-		fd = open(value, O_RDONLY);
-		if (fd < 0)
-			ft_error_free(data, "File path texture invalid");
-		close (fd);
+		while (data->file_split[i][j])
+		{
+			//utiliser isspace
+			if (data->file_split[i][j] != ' ' && data->file_split[i][j] != '1')
+				ft_error_free(data, "Map Invalid");
+			j++;
+		}
 	}
-	else if (c == 'F' || c == 'C')
-	{
-		ft_check_value_c_f(data, s);
-		n = s[2];
-		value = ft_strchr(s, n);
-	}
-	ft_add_id(data, value, c);
 }
 
 void	ft_recup_identifier(t_data *data)
@@ -83,6 +68,7 @@ void	ft_recup_identifier(t_data *data)
 	int	i;
 
 	i = 0;
+	ft_check_id_bottom_file(data);
 	while (i < 6)
 	{
 		ft_check_first_letter(data, data->file_split[i][0]);
@@ -91,26 +77,29 @@ void	ft_recup_identifier(t_data *data)
 			data->file_split[i][0]);
 		i++;
 	}
-	if (data->id.no == NULL || data->id.so == NULL || data->id.we == NULL
-		|| data->id.ea == NULL || data->id.f == NULL || data->id.c == NULL)
-		ft_error_free(data, "Invalid identifier");
 }
-
 
 //verifier si 1ere lettre ok
 //		AVANT de mettre dans id : 
-//			path/color = verifier que id bien ecris
-//			path = verifier si path correct
-//			color = verifier si c'est un chiffre
-//			color = pas plusieurs virgule
-//			color = pas de virgule au debut ou a la fin
+//			ok - path/color = pas de txt en fin de fichier ex : "    NO[...]" ou "fanfan[..]"
+//			ok - path/color = verifier que id bien ecris
+//			ok - path/color = pas d'espace avant identifier
+//			ok - path/color = value id vide
+//			ok - path = verifier si path bien ecris
+//			ok - color = verifier si c'est un chiffre
+//			ok - color = pas plusieurs virgule
+//			ok - color = pas de virgule au debut ou a la fin
+//			ok - color = possible espace avant apres au milieu (avec chiffre RGB valide)
+//			ok - color = espace a la place d'une valeur RGB ou entre chiffre
+//			
 //
 //
 //		AU MOMENT DE METTRE DANS ID:
-//			color = verifier si c'est bien un chiffre entre 0 et 255
-//			color = trop ou pas assez de valeur
-//			color = verification des doublons
+//			ok - color = verifier si c'est bien un chiffre entre 0 et 255
+//			ok - color = trop ou pas assez de valeur
+//			ok - color = verification des doublons
 //			
-//			path = verification des doublons
+//			ok - path = ext path_file doit etre en xpm
+//			ok - path = verification des doublons
 //
-//verifier que tous les identifiers sont remplis
+//     ok - verifier que tous les identifiers sont remplis
