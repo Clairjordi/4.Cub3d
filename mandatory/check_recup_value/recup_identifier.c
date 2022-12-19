@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:02:52 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/18 17:28:29 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:40:50 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,28 +78,3 @@ void	ft_recup_identifier(t_data *data)
 		i++;
 	}
 }
-
-//verifier si 1ere lettre ok
-//		AVANT de mettre dans id : 
-//			ok - path/color = pas de txt en fin de fichier ex : "    NO[...]" ou "fanfan[..]"
-//			ok - path/color = verifier que id bien ecris
-//			ok - path/color = pas d'espace avant identifier
-//			ok - path/color = value id vide
-//			ok - path = verifier si path bien ecris
-//			ok - color = verifier si c'est un chiffre
-//			ok - color = pas plusieurs virgule
-//			ok - color = pas de virgule au debut ou a la fin
-//			ok - color = possible espace avant apres au milieu (avec chiffre RGB valide)
-//			ok - color = espace a la place d'une valeur RGB ou entre chiffre
-//			
-//
-//
-//		AU MOMENT DE METTRE DANS ID:
-//			ok - color = verifier si c'est bien un chiffre entre 0 et 255
-//			ok - color = trop ou pas assez de valeur
-//			ok - color = verification des doublons
-//			
-//			ok - path = ext path_file doit etre en xpm
-//			ok - path = verification des doublons
-//
-//     ok - verifier que tous les identifiers sont remplis

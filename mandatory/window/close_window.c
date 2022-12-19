@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   close_windows.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 20:44:24 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/19 11:10:20 by clorcery         ###   ########.fr       */
+/*   Created: 2022/12/19 10:48:31 by clorcery          #+#    #+#             */
+/*   Updated: 2022/12/19 10:58:36 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
-int	main(int argc, char **argv)
+int	ft_close(t_data *data)
 {
-	t_data	data;
+	mlx_clear_window(data->mlx, data->win);
+	//detruire les images
+	//utiliser mlx_destroy_image(data->mlx, [image]);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	ft_free(data);
+	exit(0);
+}
 
-	if (argc != 2)
-		ft_error(".cub file not found");
-	if (check_file_name(argv[1]) == FALSE)
-		ft_error("wrong format");
-	ft_init_struct(&data);
-	/*initialize_map(&data, argv[1]);*/
-	ft_recup_tab_file(&data, argv[1]);
-	//ft_recup_identifier(&data);
-	ft_open_window(&data);
-	ft_close_window(&data);
-	mlx_loop(data.mlx);
-	return (0);
+void	ft_close_window(t_data *data)
+{
+	mlx_hook(data->win, 17, 0, ft_close, data);
 }

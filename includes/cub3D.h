@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/18 17:23:36 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/19 11:02:34 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "../libft/all_h.h"
+# include "../minilibx/mlx.h"
+# include "../minilibx/mlx_int.h"
 
 typedef struct s_map
 {
@@ -45,6 +47,8 @@ typedef struct s_data
 	void	*mlx;
 	void	*win;
 	char	**file_split;
+	int		px;
+	int		py;
 	t_id	id;
 	t_map	map;
 }	t_data;
@@ -78,6 +82,14 @@ void		initialize_map(t_data *data, char *str);
 /*recup_map*/
 void		ft_recup_tab_file(t_data *data, char *arg);
 
+//WINDOW
+/*open_window*/
+void		ft_open_window(t_data *data);
+/*close_window*/
+int			ft_close(t_data *data);
+void		ft_close_window(t_data *data);
+/*key_hook*/
+int			key_hook(int keycode, t_data *data);
 /*Utils*/
 
 //FREE
