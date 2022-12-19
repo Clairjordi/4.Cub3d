@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/19 15:53:23 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:15:45 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+	void		*img;
+	int			bpp;
+	int			l_length;
+	int			endian;
+	char		*addr;
 	char		**file_split;
 	int			px;
 	int			py;

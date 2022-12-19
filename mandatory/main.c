@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:44:24 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/19 17:14:52 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:52:56 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		ft_error("wrong format");
 	data.mlx = mlx_init();
 	ft_init_struct(&data);
-	initialize_map(&data, argv[1]);
+	//initialize_map(&data, argv[1]);
 	ft_recup_tab_file(&data, argv[1]);
 	ft_recup_identifier(&data);
 	check_map(&data);
