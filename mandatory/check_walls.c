@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:30:25 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/19 15:31:46 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:35:26 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	check_walls(t_data *data)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 6;
 	while (data->file_split[i])
 	{
 		j = 0;
@@ -98,7 +98,8 @@ void	check_walls(t_data *data)
 				check_side_walls(data, &data->file_split[i], &j);
 			else if (i == (data->map.lines - 1))
 				check_up_down_walls(data, &data->file_split[i], &j);
-			j++;
+			if (data->file_split[i][j] != '\0')
+				j++;
 		}
 		i++;
 	}

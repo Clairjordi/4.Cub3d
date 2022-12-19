@@ -6,7 +6,7 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 16:08:31 by clorcery          #+#    #+#              #
-#    Updated: 2022/12/19 15:58:01 by mcloarec         ###   ########.fr        #
+#    Updated: 2022/12/19 16:05:34 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS = mandatory/main.c \
 	   mandatory/check_recup_value/recup_identifier_bis.c \
 	   mandatory/check_recup_value/utils_id.c \
 	   mandatory/check_recup_value/utils_id_bis.c \
+	   mandatory/check_walls.c \
 	   mandatory/window/open_window.c \
 	   mandatory/window/key_hook.c \
 	   mandatory/window/close_window.c \

@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:56:14 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/19 15:50:28 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:51:05 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ void	check_map(t_data *data)
 	int	j;
 	int	col;
 
-	if (data->id.no == NULL || data->id.so == NULL || data->id.we == NULL
-		|| data->id.ea == NULL || data->id.f == -1 || data->id.c == -1)
-		ft_error_free(data, "File content is wrong");
+	i = 6;
 	col = 0;
 	while (data->file_split[i])
 	{
@@ -50,8 +48,8 @@ void	check_map(t_data *data)
 			col = j;
 		i++;
 	}
-	if (i != data->map.lines || j != data->map.columns)
-		ft_error_free(data, "Wrong map configuration");
+	/* if (i != data->map.lines || j != data->map.columns) */
+	/* 	ft_error_free(data, "Wrong map configuration"); */
 }
 
 int	check_file_name(char *str)

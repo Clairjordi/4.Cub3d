@@ -1,3 +1,11 @@
+NO ./sprites_solong/grass3.xpm
+SO ./sprites_solong/grass3.xpm
+EA ./sprites_solong/bush.xpm
+WE ./sprites_solong/bush.xpm
+
+C 1,255,0
+F 255,1,0
+
         111111111111111111
         110000000000000111
 11111111000011100000001111

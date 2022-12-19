@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 16:25:19 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/19 10:55:25 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:34:01 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_free_data(t_data *data)
 {
 	if (data->file_split != NULL)
 		ft_free_tab_char(data->file_split);
-	free(data->mlx);
+	//free(data->mlx);
 }
 
 void	ft_free_map(t_data *data)
