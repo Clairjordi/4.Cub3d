@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/17 17:56:56 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:33:48 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	ft_init_struct(t_data *data);
 /*Check*/
 int		check_file_name(char *str);
 void	check_map(t_data *data);
+
+/*Check Walls*/
 void	check_walls(t_data *data);
 
 /*Map*/
