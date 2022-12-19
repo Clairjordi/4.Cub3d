@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:27:04 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/17 14:24:15 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:49:21 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	ft_init_identifier(t_data *data)
 	data->id.so = NULL;
 	data->id.we = NULL;
 	data->id.ea = NULL;
-	data->id.f = -1;
-	data->id.c = -1;
+	data->id.f = NULL;
+	data->id.c = NULL;
 }
 
 static void	ft_init_player(t_data *data)
@@ -36,6 +36,8 @@ static void	ft_init_map(t_data *data)
 static void	ft_init_data(t_data *data)
 {
 	data->file_split = NULL;
+	data->px = 0;
+	data->py = 0;
 }
 
 void	ft_init_struct(t_data *data)

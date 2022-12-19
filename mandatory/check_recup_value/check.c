@@ -6,11 +6,11 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:56:14 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/19 15:39:33 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:50:28 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 void	check_valid_char(t_data *data, char c)
 {
