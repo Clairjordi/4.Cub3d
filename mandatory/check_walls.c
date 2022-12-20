@@ -6,11 +6,29 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:30:25 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/19 16:35:26 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/20 18:32:16 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+static void	check_non_even_walls_bis(t_data *data, int i, int j)
+{
+	if ((i != 0 || i != data->map.lines - 1) && j > 0
+		&& data->file_split[i][j] == '0'
+		&& (data->file_split[i][j + 1] == '1'
+				|| data->file_split[i][j - 1] == '1'))
+	{
+		if (ft_isspace(data->file_split[i + 1][j - 1]) == 0
+				|| ft_isspace(data->file_split[i - 1][j - 1]) == 0)
+			ft_error_free(data, "Map is not surrounded by walls");
+		if ((ft_isspace(data->file_split[i + 1][j + 1]) == 0
+			|| data->file_split[i + 1][j + 1] == '\0')
+			|| ft_isspace(data->file_split[i - 1][j + 1]) == 0 ||
+			data->file_split[i - 1][j + 1] == '\0')
+			ft_error_free(data, "Map is not surrounded by walls");
+	}
+}
 
 void	check_non_even_walls(t_data *data, int i)
 {
@@ -19,6 +37,7 @@ void	check_non_even_walls(t_data *data, int i)
 	j = 0;
 	while (data->file_split[i][j])
 	{
+		check_non_even_walls_bis(data, i, j);
 		if ((i != 0 || i != data->map.lines - 1)
 			&& data->file_split[i][j] == '0'
 			&& data->file_split[i - 1][j] == 32)
@@ -92,11 +111,13 @@ void	check_walls(t_data *data)
 		while (data->file_split[i][j])
 		{
 			check_non_even_walls(data, i);
-			if (i == 0)
+			if (i == 6)
 				check_up_down_walls(data, &data->file_split[i], &j);
 			else if (i != 0 && i != (data->map.lines - 1))
 				check_side_walls(data, &data->file_split[i], &j);
-			else if (i == (data->map.lines - 1))
+			//else if (i == (data->map.lines - 1)) j'ai enleve le -1 pour cela 
+			//prenne bien le dernier et non l'avant dernier
+			else if (i == data->map.lines)
 				check_up_down_walls(data, &data->file_split[i], &j);
 			if (data->file_split[i][j] != '\0')
 				j++;

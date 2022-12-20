@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:02:52 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/19 16:04:12 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:02:59 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,4 @@ void	ft_recup_identifier(t_data *data)
 			data->file_split[i][0]);
 		i++;
 	}
-
 }
