@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 11:02:52 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/20 16:02:59 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/21 13:27:27 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ void	ft_check_name_id(t_data *data, char *s)
 		ft_error_free(data, "Invalid name identifier");
 	if (s[0] == 'S' && ft_strncmp("SO", s, 2) != 0)
 		ft_error_free(data, "Invalid name identifier");
-	//utiliser isspace
-	if (s[0] == 'F' && s[1] != ' ')
+	if (s[0] == 'F' && ft_isspace(s[1]) != 0)
 		ft_error_free(data, "Invalid name identifier");
-	//utiliser isspace
-	if (s[0] == 'C' && s[1] != ' ')
+	if (s[0] == 'C' && ft_isspace(s[1]) != 0)
 		ft_error_free(data, "Invalid name identifier");
 }
 
@@ -48,15 +46,15 @@ void	ft_check_id_bottom_file(t_data *data)
 	i = 0;
 	while (data->file_split[i + 1])
 		i++;
-	//utiliser isspace
-	if (data->file_split[i][0] != ' ' && data->file_split[i][0] != '1')
+	if (ft_isspace(data->file_split[i][0]) != 0
+			&& data->file_split[i][0] != '1')
 		ft_error_free(data, "Map Invalid");
 	if (data->file_split[i][0] == ' ')
 	{
 		while (data->file_split[i][j])
 		{
-			//utiliser isspace
-			if (data->file_split[i][j] != ' ' && data->file_split[i][j] != '1')
+			if (ft_isspace(data->file_split[i][j]) != 0
+					&& data->file_split[i][j] != '1')
 				ft_error_free(data, "Map Invalid");
 			j++;
 		}
