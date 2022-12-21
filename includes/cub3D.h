@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/19 18:15:45 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:51:05 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 typedef struct s_map
 {
 	char	**matrix;
-	int		start;
 	int		columns;
 	int		lines;
 }	t_map;
@@ -35,6 +34,8 @@ typedef struct s_map
 typedef struct s_player
 {
 	char	start;
+	int			px;
+	int			py;
 }	t_player;
 
 typedef struct s_identifier
@@ -57,8 +58,6 @@ typedef struct s_data
 	int			endian;
 	char		*addr;
 	char		**file_split;
-	int			px;
-	int			py;
 	t_id		id;
 	t_map		map;
 	t_player	player;
@@ -96,6 +95,10 @@ void		initialize_map(t_data *data, char *str);
 
 /*recup_map*/
 void		ft_recup_tab_file(t_data *data, char *arg);
+
+//RAY_CASTING
+/*ray_casting*/
+void		ft_ray_casting(t_data *data);
 
 //WINDOW
 /*open_window*/

@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:27:04 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/19 18:14:15 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:08:44 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,18 @@ static void	ft_init_identifier(t_data *data)
 static void	ft_init_player(t_data *data)
 {
 	data->player.start = 'O';
+	data->player.px = 0;
+	data->player.py = 0;
 }
 
 static void	ft_init_map(t_data *data)
 {
 	data->map.matrix = NULL;
-	data->map.start = 0;
 }
 
 static void	ft_init_data(t_data *data)
 {
 	data->file_split = NULL;
-	data->px = 0;
-	data->py = 0;
 	data->addr = NULL;
 }
 

@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:44:24 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/20 17:56:41 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:24:25 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 	check_map(&data);
 	check_walls(&data);
 	ft_open_window(&data);
+	//ft_raycasting(&data);
 	ft_close_window(&data);
 	mlx_loop(data.mlx);
 	ft_free(&data);

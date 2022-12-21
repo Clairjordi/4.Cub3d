@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:30:25 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/20 18:32:16 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:01:52 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,6 @@ void	check_walls(t_data *data)
 				check_up_down_walls(data, &data->file_split[i], &j);
 			else if (i != 0 && i != (data->map.lines - 1))
 				check_side_walls(data, &data->file_split[i], &j);
-			//else if (i == (data->map.lines - 1)) j'ai enleve le -1 pour cela 
-			//prenne bien le dernier et non l'avant dernier
 			else if (i == data->map.lines)
 				check_up_down_walls(data, &data->file_split[i], &j);
 			if (data->file_split[i][j] != '\0')
