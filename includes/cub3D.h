@@ -75,6 +75,7 @@ typedef struct s_data
 	t_img		img;
 }	t_data;
 
+
 /*Init*/
 void		ft_init_struct(t_data *data);
 
