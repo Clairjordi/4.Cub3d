@@ -15,11 +15,15 @@
 # define TRUE 0
 # define FALSE 1
 # define ERROR -1
+# define SCREEN_WIDTH 640
+# define SCREEN_HEIGHT 480
+# define FOV 60.0
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <stdbool.h>
 # include "../libft/all_h.h"
 # include "../minilibx/mlx.h"
 # include "../minilibx/mlx_int.h"
@@ -27,14 +31,17 @@
 typedef struct s_map
 {
 	char	**matrix;
-	int		start;
 	int		columns;
 	int		lines;
+	bool		*wall;
+	t_player	begin;
 }	t_map;
 
 typedef struct s_player
 {
 	char	start;
+	int	px;
+	int	py;
 }	t_player;
 
 typedef struct s_identifier
@@ -47,16 +54,25 @@ typedef struct s_identifier
 	int		*c;
 }	t_id;
 
+typedef struct s_img
+{
+	void		*img;
+	int		*data;
+	int		pp;
+	int		l_length;
+	int		endian;
+	int		buffer[SCREEN_HEIGHT][SCREEN_WIDTH];
+}			t_img;
+
 typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
 	char		**file_split;
-	int			px;
-	int			py;
 	t_id		id;
 	t_map		map;
 	t_player	player;
+	t_img		img;
 }	t_data;
 
 /*Init*/
