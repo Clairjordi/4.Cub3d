@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/21 14:51:05 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:54:15 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ typedef struct s_data
 void		ft_init_struct(t_data *data);
 
 //CHECK_RECUP_VALUE
+/*check_recup_value*/
+void		ft_check_recup_value(t_data *data, char *av);
+/*recup_file*/
+void		ft_recup_tab_file(t_data *data, char *arg);
 /*Check*/
 int			check_file_name(char *str);
 void		check_map(t_data *data);
@@ -90,11 +94,9 @@ char		*ft_charjoin(t_data *data, char *s1, char c);
 char		*ft_strdup_cub(t_data *data, char *s);
 long long	ft_atoll_cub(t_data *data, char *nptr);
 
-/*Map*/
+/*Map*/   // A garder ?
 void		initialize_map(t_data *data, char *str);
 
-/*recup_map*/
-void		ft_recup_tab_file(t_data *data, char *arg);
 
 //RAY_CASTING
 /*ray_casting*/

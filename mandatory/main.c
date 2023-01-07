@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:44:24 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/21 14:24:25 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:17:35 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,10 @@ int	main(int argc, char **argv)
 		ft_error("wrong format");
 	data.mlx = mlx_init();
 	ft_init_struct(&data);
-	//initialize_map(&data, argv[1]);
-	ft_recup_tab_file(&data, argv[1]);
-	ft_recup_identifier(&data);
-	check_map(&data);
-	check_walls(&data);
+	//initialize_map(&data, argv[1]); //a garder ?
+	ft_check_recup_value(&data, argv[1]);
 	ft_open_window(&data);
-	//ft_raycasting(&data);
+	ft_ray_casting(&data);
 	ft_close_window(&data);
 	mlx_loop(data.mlx);
 	ft_free(&data);

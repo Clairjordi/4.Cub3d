@@ -6,11 +6,11 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:30:25 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/21 15:01:52 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:58:18 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 static void	check_non_even_walls_bis(t_data *data, int i, int j)
 {

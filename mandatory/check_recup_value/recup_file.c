@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   recup_map.c                                        :+:      :+:    :+:   */
+/*   recup_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:37:54 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/20 16:03:44 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:57:46 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 // open le fichier est recupere la taille pour le malloc de char *map 
 int	check_file(t_data *data, char *s)
