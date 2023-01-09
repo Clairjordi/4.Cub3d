@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:30:25 by mcloarec          #+#    #+#             */
-/*   Updated: 2023/01/07 13:58:18 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/09 19:18:47 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	check_non_even_walls_bis(t_data *data, int i, int j)
 {
-	if ((i != 0 || i != data->map.lines - 1) && j > 0
+	if ((i != 0 || i != data->map.lines + 5) && j > 0
 		&& data->file_split[i][j] == '0'
 		&& (data->file_split[i][j + 1] == '1'
 				|| data->file_split[i][j - 1] == '1'))
@@ -38,15 +38,15 @@ void	check_non_even_walls(t_data *data, int i)
 	while (data->file_split[i][j])
 	{
 		check_non_even_walls_bis(data, i, j);
-		if ((i != 0 || i != data->map.lines - 1)
+		if ((i != 0 || i != data->map.lines + 5)
 			&& data->file_split[i][j] == '0'
 			&& data->file_split[i - 1][j] == 32)
 			ft_error_free(data, "Map is not surrounded by walls");
-		else if ((i != 0 || i != data->map.lines - 1)
+		else if ((i != 0 || i != data->map.lines + 5)
 			&& data->file_split[i][j] == '0'
 			&& data->file_split[i + 1][j] == 32)
 			ft_error_free(data, "Map is not surrounded by walls");
-		else if (i == 0 || i == data->map.lines - 1)
+		else if (i == 0 || i == data->map.lines + 5)
 			break ;
 		j++;
 	}
@@ -113,9 +113,9 @@ void	check_walls(t_data *data)
 			check_non_even_walls(data, i);
 			if (i == 6)
 				check_up_down_walls(data, &data->file_split[i], &j);
-			else if (i != 0 && i != (data->map.lines - 1))
+			else if (i != 0 && i != (data->map.lines + 5))
 				check_side_walls(data, &data->file_split[i], &j);
-			else if (i == data->map.lines)
+			else if (i == (data->map.lines + 5))
 				check_up_down_walls(data, &data->file_split[i], &j);
 			if (data->file_split[i][j] != '\0')
 				j++;

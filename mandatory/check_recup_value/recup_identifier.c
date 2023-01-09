@@ -48,14 +48,14 @@ void	ft_check_id_bottom_file(t_data *data)
 		i++;
 	if (ft_isspace(data->file_split[i][0]) != 0
 			&& data->file_split[i][0] != '1')
-		ft_error_free(data, "Map Invalid");
+		ft_error_free(data, "Invalid map");
 	if (data->file_split[i][0] == ' ')
 	{
 		while (data->file_split[i][j])
 		{
 			if (ft_isspace(data->file_split[i][j]) != 0
 					&& data->file_split[i][j] != '1')
-				ft_error_free(data, "Map Invalid");
+				ft_error_free(data, "Invalid map");
 			j++;
 		}
 	}

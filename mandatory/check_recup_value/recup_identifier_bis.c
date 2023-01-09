@@ -98,7 +98,7 @@ void	ft_check_value_id_and_add(t_data *data, char *s, char c)
 		value = ft_strchr(s, '.');
 		fd = open(value, O_RDONLY);
 		if (fd < 0)
-			ft_error_free(data, "File path texture invalid");
+			ft_error_free(data, "Invalid file path texture");
 		close (fd);
 	}
 	else if (c == 'F' || c == 'C')

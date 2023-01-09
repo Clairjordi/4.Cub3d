@@ -6,7 +6,7 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 16:08:31 by clorcery          #+#    #+#              #
-#    Updated: 2023/01/07 13:57:25 by clorcery         ###   ########.fr        #
+#    Updated: 2023/01/09 19:23:04 by clorcery         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ EOC:="\033[0;0m"
 # /* ~~~~~~~~~~~~~~~~~ */
 
 SRCS = mandatory/main.c \
-	   mandatory/check_recup_value/recup_file.c \
 	   mandatory/check_recup_value/check_recup_value.c \
+	   mandatory/check_recup_value/recup_file.c \
 	   mandatory/check_recup_value/check.c \
 	   mandatory/check_recup_value/recup_identifier.c \
 	   mandatory/check_recup_value/recup_identifier_add_value.c \
@@ -32,7 +32,6 @@ SRCS = mandatory/main.c \
 	   mandatory/ray_casting/ray_casting.c \
 	   mandatory/utils.c \
 	   mandatory/init.c \
-	   mandatory/map.c \
 	   mandatory/free/free.c \
 	   mandatory/free/exit.c
 

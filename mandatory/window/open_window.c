@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 10:21:06 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/19 18:32:19 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:49:42 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,31 @@ void	ft_open_window(t_data *data)
 	int	y;
 
 	y = 0;
-	data->win = mlx_new_window(data->mlx, (data->map.columns * 32),
-		(data->map.lines * 32), "Cub3D");
-	data->img = mlx_new_image(data->mlx, (data->map.columns * 32),
-		(data->map.lines * 32));
+	data->win = mlx_new_window(data->mlx, SCREEN_WIDTH,
+		SCREEN_HEIGHT, "Cub3D");
+	data->img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	data->addr = mlx_get_data_addr(data->img, &data->bpp,
 		&data->l_length, &data->endian);
-	while (y <= (data->map.lines * 32 / 2))
+	while (y <= (SCREEN_HEIGHT / 2))
 	{
 		x = 0;
-		while (x <= data->map.columns * 32)
+		while (x <= SCREEN_WIDTH)
 		{
 			my_mlx_pixel_put(data, x, y, 0x00D995A0);
 			x++;
 		}
 		y++;
 	}
-	while (y <= (data->map.lines * 32))
+	while (y <= SCREEN_HEIGHT)
 	{
 		x = 0;
-		while (x <= data->map.columns * 32)
+		while (x <= SCREEN_WIDTH)
 		{
 			my_mlx_pixel_put(data, x, y, 0x00FFF973);
 			x++;
 		}
 		y++;
 	}
-
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	//init des images ici ? - pixel put dans une image puis afficher l'image car utilisation de
 	//la fonction pixel put obligatoire
