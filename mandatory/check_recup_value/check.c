@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:56:14 by mcloarec          #+#    #+#             */
-/*   Updated: 2023/01/09 14:47:56 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/09 18:01:01 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ void	check_valid_char(t_data *data, char c, int y, int x)
 		else
 		{
 			data->player.start = c;
-			data->player.px = x;
-			data->player.py = y;
-			//data->map.vx = 
+			data->player.px = x + 0.5;
+			data->player.py = y + 0.5;
 		}
 	}
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
 // open le fichier est recupere la taille pour le malloc de char *map 
 int	check_file(t_data *data, char *s)

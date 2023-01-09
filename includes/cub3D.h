@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/09 14:49:58 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/09 19:07:42 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 # define TRUE 0
 # define FALSE 1
 # define ERROR -1
-# define SCREEN_WIDTH 640
-# define SCREEN_HEIGHT 480
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 720
+# define RAD M_PI / 180
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include <math.h>
 # include "../libft/all_h.h"
 # include "../minilibx/mlx.h"
 # include "../minilibx/mlx_int.h"
@@ -37,14 +39,22 @@ typedef struct s_map
 typedef struct s_player
 {
 	char	start;
-	int		px;
-	int		py;
-	int		dirx;//représente la direction du joueur
-	int		diry;
-	int		planex;//représente le plan de la camera du joueur
-	int		planey;
-	int		fov;
+	double	px;
+	double	py;
 }	t_player;
+
+typedef struct s_view
+{
+	double	angle;
+	double	dirx;//représente la direction du joueur
+	double	diry;
+	double	planex;//représente le plan de la camera du joueur
+	double	planey;
+	double	camerax;
+	double	raydirx;
+	double	raydiry;
+	double	fov;
+} t_view;
 
 typedef struct s_identifier
 {
@@ -56,7 +66,7 @@ typedef struct s_identifier
 	int		*c;
 }	t_id;
 
-// typedef struct s_img
+// typedef struct s_imgs
 // {
 // 	void		*img;
 // 	int		*data;
@@ -64,7 +74,7 @@ typedef struct s_identifier
 // 	int		l_length;
 // 	int		endian;
 // 	int		buffer[SCREEN_HEIGHT][SCREEN_WIDTH];
-// }	t_img;
+// }	t_imgs;
 
 typedef struct s_data
 {
@@ -79,12 +89,16 @@ typedef struct s_data
 	t_id		id;
 	t_map		map;
 	t_player	player;
+	t_view		view;
 }	t_data;
 
 /*Init*/
 void		ft_init_struct(t_data *data);
 
 //CHECK_RECUP_VALUE
+/*Check_recup_value*/
+void	ft_check_recup_value(t_data *data, char *av);
+void	ft_recup_map(t_data *data);
 /*Check*/
 int			check_file_name(char *str);
 void		check_map(t_data *data);
@@ -110,11 +124,7 @@ char		*ft_charjoin(t_data *data, char *s1, char c);
 /*Utils_id_bis*/
 char		*ft_strdup_cub(t_data *data, char *s);
 long long	ft_atoll_cub(t_data *data, char *nptr);
-
-/*Map*/
-void		initialize_map(t_data *data, char *str);
-
-/*recup_map*/
+/*recup_file*/
 void		ft_recup_tab_file(t_data *data, char *arg);
 
 //RAY_CASTING
@@ -123,6 +133,7 @@ void		ft_ray_casting(t_data *data);
 
 //WINDOW
 /*open_window*/
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		ft_open_window(t_data *data);
 /*close_window*/
 int			ft_close(t_data *data);
