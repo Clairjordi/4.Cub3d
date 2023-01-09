@@ -6,13 +6,13 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:56:14 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/19 17:55:53 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/09 14:47:56 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	check_valid_char(t_data *data, char c)
+void	check_valid_char(t_data *data, char c, int y, int x)
 {
 	if (c != ' ' && c != '0' && c != '1' && c != 'W'
 		&& c != 'N' && c != 'S' && c != 'E')
@@ -22,7 +22,12 @@ void	check_valid_char(t_data *data, char c)
 		if (data->player.start != 'O')
 			ft_error_free(data, "Only one start possible");
 		else
+		{
 			data->player.start = c;
+			data->player.px = x;
+			data->player.py = y;
+			//data->map.vx = 
+		}
 	}
 }
 
@@ -41,7 +46,7 @@ void	check_map(t_data *data)
 		{
 			while (ft_isspace(data->file_split[i][j]) == 0)
 				j++;
-			check_valid_char(data, data->file_split[i][j]);
+			check_valid_char(data, data->file_split[i][j], i, j);
 			j++;
 		}
 		if (col < j)
@@ -50,7 +55,7 @@ void	check_map(t_data *data)
 	}
 	data->map.columns = col;
 	data->map.lines = i - 6;
-	printf("lines %d\n", data->map.lines);
+	printf("Lines = %d\n", data->map.lines);
 	/* if (i != data->map.lines || j != data->map.columns) */
 	/* 	ft_error_free(data, "Wrong map configuration"); */
 }

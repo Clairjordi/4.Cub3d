@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/21 14:51:05 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/09 14:49:58 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 # define TRUE 0
 # define FALSE 1
 # define ERROR -1
+# define SCREEN_WIDTH 640
+# define SCREEN_HEIGHT 480
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <stdbool.h>
 # include "../libft/all_h.h"
 # include "../minilibx/mlx.h"
 # include "../minilibx/mlx_int.h"
@@ -34,8 +37,13 @@ typedef struct s_map
 typedef struct s_player
 {
 	char	start;
-	int			px;
-	int			py;
+	int		px;
+	int		py;
+	int		dirx;//représente la direction du joueur
+	int		diry;
+	int		planex;//représente le plan de la camera du joueur
+	int		planey;
+	int		fov;
 }	t_player;
 
 typedef struct s_identifier
@@ -47,6 +55,16 @@ typedef struct s_identifier
 	int		*f;
 	int		*c;
 }	t_id;
+
+// typedef struct s_img
+// {
+// 	void		*img;
+// 	int		*data;
+// 	int		pp;
+// 	int		l_length;
+// 	int		endian;
+// 	int		buffer[SCREEN_HEIGHT][SCREEN_WIDTH];
+// }	t_img;
 
 typedef struct s_data
 {
@@ -70,9 +88,12 @@ void		ft_init_struct(t_data *data);
 /*Check*/
 int			check_file_name(char *str);
 void		check_map(t_data *data);
+void		check_valid_char(t_data *data, char c, int y, int x);
 /*Check Walls*/
+void		check_non_even_walls(t_data *data, int i);
+void		check_up_down_walls(t_data *data, char **s, int *j);
+void		check_side_walls(t_data *data, char **s, int *j);
 void		check_walls(t_data *data);
-int			check_file_name(char *str);
 /*recup_identifier*/
 void		ft_check_first_letter(t_data *data, char c);
 void		ft_check_name_id(t_data *data, char *s);
