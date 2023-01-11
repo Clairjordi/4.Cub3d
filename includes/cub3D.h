@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/09 19:07:42 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/09 19:24:29 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ void		ft_init_struct(t_data *data);
 
 //CHECK_RECUP_VALUE
 /*Check_recup_value*/
-void	ft_check_recup_value(t_data *data, char *av);
-void	ft_recup_map(t_data *data);
+void		ft_check_recup_value(t_data *data, char *av);
+void		ft_recup_map(t_data *data);
 /*Check*/
 int			check_file_name(char *str);
 void		check_map(t_data *data);
