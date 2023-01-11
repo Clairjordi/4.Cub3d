@@ -6,35 +6,36 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:21:45 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/09 19:17:53 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:01:53 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-/* void	ft_pos_player(t_data *data) */
-/* { */
-/* 	int i; */
-/* 	int	j; */
-/*  */
-/* 	i = 0; */
-/* 	while (data->map.matrix[i]) */
-/* 	{ */
-/* 		j = 0; */
-/* 		while (data->map.matrix[i][j]) */
-/* 		{ */
-/* 			if (data->map.matrix[i][j] == 'N' || data->map.matrix[i][j] == 'S' */
-/* 					||data->map.matrix[i][j] == 'E' || data->map.matrix[i][j] == 'W') */
-/* 			{ */
-/* 				data->player.px = j; */
-/* 				data->player.py = i; */
-/* 				break ; */
-/* 			} */
-/* 			j++; */
-/* 		} */
-/* 		i++; */
-/* 	} */
-/* } */
+void	ft_pos_player(t_data *data)
+{
+	int i;
+	int	j;
+
+	i = 0;
+	while (data->map.matrix[i])
+	{
+		j = 0;
+		while (data->map.matrix[i][j])
+		{
+			if (data->map.matrix[i][j] == 'N' || data->map.matrix[i][j] == 'S'
+					||data->map.matrix[i][j] == 'E' || data->map.matrix[i][j] == 'W')
+			{
+				data->player.px = j;
+				data->player.py = i;
+				printf("px = %f py = %f\n", data->player.px, data->player.py);
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 double	degree_to_radian(t_data *data)
 {
@@ -119,6 +120,7 @@ void	ft_test(t_data *data)
 
 void	ft_ray_casting(t_data *data)
 {
+	ft_pos_player(data);
 	angle_from_position(data);
 	start_direction(data);
 	set_fov(data);

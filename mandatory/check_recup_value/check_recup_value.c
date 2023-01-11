@@ -6,14 +6,14 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:08:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/09 19:19:27 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:58:55 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
 /*calcul du nombre de ligne pour le malloc char* de la map*/
-int	ft_size_map(char **map)
+static int	ft_size_map(char **map)
 {
 	int	i;
 	int	size;
