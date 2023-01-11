@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 20:37:54 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/16 22:00:24 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:03:44 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,11 @@ static char	*ft_recup_file(t_data *data, char *arg)
 	if (rd < 0)
 		ft_error_free(data, "Read failed");
 	if (rd == 0)
-		ft_error_free(data, "file void");
-	file[len - 1] = '\0';
+	{
+		free(file);
+		ft_error_free(data, "File void");
+	}
+		file[len - 1] = '\0';
 	close(fd);
 	return (file);
 }

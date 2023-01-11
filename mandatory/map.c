@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:30:17 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/17 18:01:06 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/19 16:24:02 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	get_columns(int fd)
 			col = i;
 	}
 	free(cur);
-	return (i);
+	return (col);
 }
 
 int	get_lines(int fd)

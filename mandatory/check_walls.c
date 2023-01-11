@@ -6,11 +6,29 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:30:25 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/19 15:31:46 by mcloarec         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:55:07 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+static void	check_non_even_walls_bis(t_data *data, int i, int j)
+{
+	if ((i != 0 || i != data->map.lines + 5) && j > 0
+		&& data->file_split[i][j] == '0'
+		&& (data->file_split[i][j + 1] == '1'
+				|| data->file_split[i][j - 1] == '1'))
+	{
+		if (ft_isspace(data->file_split[i + 1][j - 1]) == 0
+				|| ft_isspace(data->file_split[i - 1][j - 1]) == 0)
+			ft_error_free(data, "Map is not surrounded by walls");
+		if ((ft_isspace(data->file_split[i + 1][j + 1]) == 0
+			|| data->file_split[i + 1][j + 1] == '\0')
+			|| ft_isspace(data->file_split[i - 1][j + 1]) == 0 ||
+			data->file_split[i - 1][j + 1] == '\0')
+			ft_error_free(data, "Map is not surrounded by walls");
+	}
+}
 
 void	check_non_even_walls(t_data *data, int i)
 {
@@ -19,15 +37,16 @@ void	check_non_even_walls(t_data *data, int i)
 	j = 0;
 	while (data->file_split[i][j])
 	{
-		if ((i != 0 || i != data->map.lines - 1)
+		check_non_even_walls_bis(data, i, j);
+		if ((i != 0 || i != data->map.lines + 5)
 			&& data->file_split[i][j] == '0'
 			&& data->file_split[i - 1][j] == 32)
 			ft_error_free(data, "Map is not surrounded by walls");
-		else if ((i != 0 || i != data->map.lines - 1)
+		else if ((i != 0 || i != data->map.lines + 5)
 			&& data->file_split[i][j] == '0'
 			&& data->file_split[i + 1][j] == 32)
 			ft_error_free(data, "Map is not surrounded by walls");
-		else if (i == 0 || i == data->map.lines - 1)
+		else if (i == 0 || i == data->map.lines + 5)
 			break ;
 		j++;
 	}
@@ -85,20 +104,21 @@ void	check_walls(t_data *data)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 6;
 	while (data->file_split[i])
 	{
 		j = 0;
 		while (data->file_split[i][j])
 		{
 			check_non_even_walls(data, i);
-			if (i == 0)
+			if (i == 6)
 				check_up_down_walls(data, &data->file_split[i], &j);
-			else if (i != 0 && i != (data->map.lines - 1))
+			else if (i != 0 && i != (data->map.lines + 5))
 				check_side_walls(data, &data->file_split[i], &j);
-			else if (i == (data->map.lines - 1))
+			else if (i == (data->map.lines + 5))
 				check_up_down_walls(data, &data->file_split[i], &j);
-			j++;
+			if (data->file_split[i][j] != '\0')
+				j++;
 		}
 		i++;
 	}

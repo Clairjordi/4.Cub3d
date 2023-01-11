@@ -2,10 +2,12 @@ CUB3D:
 
 VERIFICATION PARSING:
 
+fichier vide
+
 ID:
 		AVANT de mettre dans id : 
 			ok - verifier si 1ere lettre ok
-			ok - path/color = pas de txt en fin de fichier ex : "    NO[...]" ou "fanfan[..]"
+			ok - path/color = pas de txt en fin de fichier ex : "    NO[...]" ou 										     "fanfan[..]"
 			ok - path/color = verifier que id bien ecris
 			ok - path/color = pas d'espace avant identifier
 			ok - path/color = value id vide

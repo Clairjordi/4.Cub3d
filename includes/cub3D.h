@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/19 15:53:23 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/11 09:32:19 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define ERROR -1
 # define SCREEN_WIDTH 640
 # define SCREEN_HEIGHT 480
-# define FOV 60.0
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -54,20 +53,25 @@ typedef struct s_identifier
 	int		*c;
 }	t_id;
 
-typedef struct s_img
-{
-	void		*img;
-	int		*data;
-	int		pp;
-	int		l_length;
-	int		endian;
-	int		buffer[SCREEN_HEIGHT][SCREEN_WIDTH];
-}			t_img;
+// typedef struct s_img
+// {
+// 	void		*img;
+// 	int		*data;
+// 	int		pp;
+// 	int		l_length;
+// 	int		endian;
+// 	int		buffer[SCREEN_HEIGHT][SCREEN_WIDTH];
+// }	t_img;
 
 typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+	void		*img;
+	int			bpp;
+	int			l_length;
+	int			endian;
+	char		*addr;
 	char		**file_split;
 	t_id		id;
 	t_map		map;
@@ -83,9 +87,12 @@ void		ft_init_struct(t_data *data);
 /*Check*/
 int			check_file_name(char *str);
 void		check_map(t_data *data);
+void		check_valid_char(t_data *data, char c, int y, int x);
 /*Check Walls*/
+void		check_non_even_walls(t_data *data, int i);
+void		check_up_down_walls(t_data *data, char **s, int *j);
+void		check_side_walls(t_data *data, char **s, int *j);
 void		check_walls(t_data *data);
-int			check_file_name(char *str);
 /*recup_identifier*/
 void		ft_check_first_letter(t_data *data, char c);
 void		ft_check_name_id(t_data *data, char *s);
@@ -108,6 +115,10 @@ void		initialize_map(t_data *data, char *str);
 
 /*recup_map*/
 void		ft_recup_tab_file(t_data *data, char *arg);
+
+//RAY_CASTING
+/*ray_casting*/
+void		ft_ray_casting(t_data *data);
 
 //WINDOW
 /*open_window*/

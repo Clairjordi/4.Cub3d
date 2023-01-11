@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   recup_identifier_check_value.c                     :+:      :+:    :+:   */
+/*   recup_identifier_bis.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 16:03:35 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/18 16:11:53 by clorcery         ###   ########.fr       */
+/*   Updated: 2022/12/21 13:28:20 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ static void	ft_check_value_c_f(t_data *data, char *s)
 			ft_error_free(data, "Missing value RGB");
 		if (s[2] == ',')
 			ft_error_free(data, "Invalid RGB form");
-		//utiliser isspace
-		if ((s[i] != ',' && s[i] != ' ') && ft_isdigit(s[i]) == 0)
+		if ((s[i] != ',' && ft_isspace(s[i]) != 0) && ft_isdigit(s[i]) == 0)
 			ft_error_free(data, "Invalid RGB form");
 		if (s[i] == ',' && (s[i + 1] == ',' || s[i + 1] == '\0'))
 			ft_error_free(data, "Invalid RGB form");
