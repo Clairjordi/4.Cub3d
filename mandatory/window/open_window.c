@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 10:21:06 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/11 18:10:50 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:59:11 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	//printf("x = %d, y = %d, color = %d\n", x, y, color);
 	dst = data->addr + (y * data->l_length + x * (data->bpp / 8));
 	*(unsigned int*)dst = color;
 }
@@ -52,7 +51,6 @@ void	ft_open_window(t_data *data)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	//init des images ici ? - pixel put dans une image puis afficher l'image car utilisation de
 	//la fonction pixel put obligatoire
 	 mlx_hook(data->win, 2, 1L << 0, key_hook, data);
