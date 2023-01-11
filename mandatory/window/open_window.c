@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 10:21:06 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/09 17:49:42 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:10:50 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
+	//printf("x = %d, y = %d, color = %d\n", x, y, color);
 	dst = data->addr + (y * data->l_length + x * (data->bpp / 8));
 	*(unsigned int*)dst = color;
 }

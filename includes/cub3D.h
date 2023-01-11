@@ -6,11 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/01/11 09:32:19 by mcloarec         ###   ########.fr       */
-=======
-/*   Updated: 2023/01/09 19:07:42 by clorcery         ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2023/01/11 16:12:43 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +15,8 @@
 # define TRUE 0
 # define FALSE 1
 # define ERROR -1
-# define SCREEN_WIDTH 1280
-# define SCREEN_HEIGHT 720
+# define SCREEN_WIDTH 640
+# define SCREEN_HEIGHT 480
 # define RAD M_PI / 180
 
 # include <unistd.h>
@@ -38,8 +34,6 @@ typedef struct s_map
 	char	**matrix;
 	int		columns;
 	int		lines;
-	bool		*wall;
-	t_player	begin;
 }	t_map;
 
 typedef struct s_player
@@ -57,10 +51,24 @@ typedef struct s_view
 	double	planex;//représente le plan de la camera du joueur
 	double	planey;
 	double	camerax;
+} t_view;
+
+typedef struct s_ray
+{
+	double	sidedistx;
+	double	sidedisty;
+	double	deltax;
+	double	deltay;
 	double	raydirx;
 	double	raydiry;
-	double	fov;
-} t_view;
+	int		stepx;
+	int		stepy;
+	int		mapx;
+	int		mapy;
+	int		side;
+	int		hit;
+	double	perpwalldist;
+} t_ray;
 
 typedef struct s_identifier
 {
@@ -96,6 +104,7 @@ typedef struct s_data
 	t_map		map;
 	t_player	player;
 	t_view		view;
+	t_ray		ray;
 }	t_data;
 
 
