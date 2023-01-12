@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:21:45 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/12 10:51:48 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:59:52 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void	color_walls(t_data *data, int start, int end, int x)
 	while (start <= end)
 	{
 		my_mlx_pixel_put(data, x, start, color);
-		start++;
+		start ++;
 	}
 }
 
