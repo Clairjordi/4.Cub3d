@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:08:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/09 19:10:08 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:54:00 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,8 @@ void	ft_check_recup_value(t_data *data, char *av)
 	ft_recup_identifier(data);
 	check_map(data);
 	check_walls(data);
+	if (data->player.start != 'W' && data->player.start != 'E'
+		&& data->player.start != 'N' && data->player.start != 'S')
+		ft_error_free(data, "Possible start only from N, S, W, E");
 	ft_recup_map(data);
 }

@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/12 18:17:46 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:00:11 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 # define TRUE 0
 # define FALSE 1
 # define ERROR -1
-# define SCREEN_WIDTH 640
-# define SCREEN_HEIGHT 480
-# define TEXTURE "/nfs/homes/clorcery/exo_a_rendre/Perso_cub3d/sprites_solong/item1.xpm"
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 720
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
+# define TEXTURE "../sprites_solong/item1.xpm"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -80,7 +82,7 @@ typedef struct s_identifier
 	int		*c;
 }	t_id;
 
-typedef struct s_imgs //struct pour le bableau de textures
+typedef struct s_imgs //struct pour le tableau de textures
 {
 	void	*img; // chaque image
 	int		width; // largeur utilise pour mlx_xpm_file_to_image

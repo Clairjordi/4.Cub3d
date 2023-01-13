@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:56:14 by mcloarec          #+#    #+#             */
-/*   Updated: 2023/01/11 13:50:00 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:56:51 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,6 @@ void	check_map(t_data *data)
 	}
 	data->map.columns = col;
 	data->map.lines = i - 6;
-	printf("Lines = %d\n", data->map.lines);
-	/* if (i != data->map.lines || j != data->map.columns) */
-	/* 	ft_error_free(data, "Wrong map configuration"); */
 }
 
 int	check_file_name(char *str)
