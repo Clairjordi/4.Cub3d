@@ -6,11 +6,41 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:21:45 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/13 11:26:44 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/13 19:31:22 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+void	color_walls(t_data *data, int x)
+{
+	int start;
+	int end;
+	int	color;
+
+	start = data->render.drawstart;
+	end = data->render.drawend;
+	color = 0X08A56EF;
+	if (data->ray.side == 0) //WE
+	{
+		if (data->ray.raydirx > 0) //E
+			color = 0x0C91787; //rose
+		else if (data->ray.raydirx < 0) // W
+			color = 0x055BE11; //vert
+	}
+	else if (data->ray.side == 1) //NS
+	{
+		if (data->ray.raydiry < 0) //N
+			color = 0x01218DE; //bleu
+		else if (data->ray.raydiry > 0) 
+			color = 0x0F27F0D; //orange
+	}
+	while (start <= end)
+	{
+		my_mlx_pixel_put(&data->display, x, start, color);
+		start ++;
+	}
+}
 
 void	ft_pos_player(t_data *data)
 {
@@ -126,46 +156,111 @@ void	ft_dda(t_data *data)
 		data->ray.perpwalldist = data->ray.sidedisty - data->ray.deltay;
 }
 
-void	color_walls(t_data *data, int start, int end, int x)
+void	ft_get_texture_x(t_data *data)
 {
-	int	color;
+   	if (data->ray.side == 0) // tape sur un mur vertical
+		data->render.wallx = data->player.py + data->ray.perpwalldist * data->ray.raydiry;
+    else // tape sur un mur horizontal
+		data->render.wallx = data->player.px + data->ray.perpwalldist * data->ray.raydirx;
+    
+	//calcule la distance dans le petit carre
+	//exemple : wallx = 2.4
+	//soit 2.4 - 2 = 0.4
+	data->render.wallx -= floor(data->render.wallx); 
+	// floor : calculent l'arrondi entier inférieur
+	
+	//calcul le x dans la texture
+	data->render.texx = (int)(data->render.wallx * (double)TEX_WIDTH);
+   //permet de faire les calculs en partant du bord gauche - on ne sait pas encore pourquoi 
+	if((data->ray.side == 0 && data->ray.raydirx > 0)
+		|| (data->ray.side == 1 && data->ray.raydiry < 0))
+		data->render.texx = TEX_WIDTH - data->render.texx - 1;
+}
 
-	color = 0X08A56EF;
-	if (data->ray.side == 0) //WE
+void	*ft_choose_texture(t_data *data)
+{
+	void *tmp;
+
+	tmp = NULL;
+	if (data->ray.side == 0 && data->ray.raydirx > 0)
+		tmp = data->imgs.ea;
+	if (data->ray.side == 0 && data->ray.raydirx < 0)
+		tmp = data->imgs.we;
+	// peut etre devoir inverse le nord et le sud car diry dans angle_for_position est inverse
+	if (data->ray.side == 1 && data->ray.raydiry > 0)
+		tmp = data->imgs.no;
+	if (data->ray.side == 1 && data->ray.raydiry < 0)
+		tmp = data->imgs.so;
+
+	return (tmp);
+}
+
+int	ft_recup_rgb_pixel(t_data *data, void *texture, int texy)
+{
+	int	b;
+	int	g;
+	int	r;
+	int	color;
+	t_display	*d;
+
+	d = data->render.display;
+	d->addr = mlx_get_data_addr(texture, &d->bpp,
+			&d->l_length, &d->endian);
+	/* double	pix =  (data->render.texx * 4) + (TEX_HEIGHT * 4 * texy); */
+	/* if (pix < 0) */
+	/* { */
+	/* 	color = data->id.ceiling; */
+	/* 	return (color); */
+	/* } */
+
+	b = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy)];
+	g = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy + 1)];
+	r = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy + 2)];
+	color = create_rgb(r, g, b);
+
+	printf("b = %d g = %d r = %d / texx = %d texy = %d\n",
+			b, g, r,data->render.texx, texy);
+	return (color);
+}
+
+void	ft_draw_line(t_data *data, void *texture, int x)
+{
+	//possibilite d'enlever le texy de la structure
+	int	i;
+	double step;
+	int color_pixel;
+	
+
+	i = data->render.drawstart;
+	step = (double)TEX_HEIGHT / data->render.line_height;
+	//calculer la position du y dans la texture - coordonnee du y
+	data->render.texy = (data->render.drawstart - SCREEN_HEIGHT * 0.5
+			+ data->render.line_height * 0.5) * step;
+	while (i < data->render.drawend)
 	{
-		if (data->ray.raydirx > 0) //E
-			color = 0x0C91787; //rose
-		else if (data->ray.raydirx < 0) // W
-			color = 0x055BE11; //vert
-	}
-	else if (data->ray.side == 1) //NS
-	{
-		if (data->ray.raydiry < 0) //N
-			color = 0x01218DE; //bleu
-		else if (data->ray.raydiry > 0) 
-			color = 0x0F27F0D; //orange
-	}
-	while (start <= end)
-	{
-		my_mlx_pixel_put(data, x, start, color);
-		start ++;
+		//printf("texy = %f\n", data->render.texy);
+		color_pixel = ft_recup_rgb_pixel(data, texture, (int)data->render.texy);
+		my_mlx_pixel_put(data->render.display, x, i, color_pixel);
+		data->render.texy += step;
+		i++;
 	}
 }
 
-void	ft_walls(t_data *data, int x)
+void	ft_walls(t_data *data, int x) // changer pour noter ft_each_lines_walls
 {
-	int	line_height;
-	int	drawstart;
-	int	drawend;
-	
-	line_height = (int)(SCREEN_HEIGHT / data->ray.perpwalldist);
-	drawstart = SCREEN_HEIGHT * 0.5 - line_height * 0.5;
-	if (drawstart < 0)
-		drawstart = 0;
-	drawend = SCREEN_HEIGHT * 0.5 + line_height * 0.5;
-	if (drawend >= SCREEN_HEIGHT)
-		drawend = SCREEN_HEIGHT - 1;
-	color_walls(data, drawstart, drawend, x);
+	void	*texture;
+
+	data->render.line_height = (int)(SCREEN_HEIGHT / data->ray.perpwalldist);
+	data->render.drawstart = SCREEN_HEIGHT * 0.5 - data->render.line_height * 0.5;
+	if (data->render.drawstart < 0)
+		data->render.drawstart = 0;
+	data->render.drawend = SCREEN_HEIGHT * 0.5 + data->render.line_height * 0.5;
+	if (data->render.drawend >= SCREEN_HEIGHT)
+		data->render.drawend = SCREEN_HEIGHT - 1;
+	ft_get_texture_x(data);
+	texture = ft_choose_texture(data);
+	ft_draw_line(data, texture, x); 
+	//color_walls(data, x);
 }
 
 void	castrays(t_data *data)
@@ -186,17 +281,24 @@ void	castrays(t_data *data)
 	}
 }
 
+void	init_images(t_data *data)
+{
+	int	width;
+	int	height;
+
+	data->imgs.no = mlx_xpm_file_to_image(data->mlx, data->id.no, &width, &height);
+	if (!data->imgs.no)
+		ft_error_free(data, "Malloc");
+	data->imgs.so = mlx_xpm_file_to_image(data->mlx, data->id.so, &width, &height);
+	data->imgs.we = mlx_xpm_file_to_image(data->mlx, data->id.we, &width, &height);
+	data->imgs.ea = mlx_xpm_file_to_image(data->mlx, data->id.ea, &width, &height);
+	//checker la taille des images, si != TEX_WIDTH et TEX_HEIGHT alors erreurs	
+}
+
 void	ft_ray_casting(t_data *data)
 {
-	/* int width; */
-	/* int height; */
-
 	ft_pos_player(data);
 	angle_from_position(data);
-	/* void * img = mlx_xpm_file_to_image(data->mlx, TEXTURE, &width, &height); */
-	/* if (!img) */
-	/* 	printf("aled\n"); */
-    /*  */
-	/* printf("w = %d - h = %d\n", width, height); */
+	init_images(data);
 	castrays(data);
 }

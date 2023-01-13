@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 16:25:19 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/19 17:14:33 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/13 17:46:00 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,4 @@ void	ft_free(t_data *data)
 {
 	ft_free_map(data);
 	ft_free_identifier(data);
-	ft_free_data(data);
 }

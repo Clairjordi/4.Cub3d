@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 10:46:05 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/12 16:23:19 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:07:21 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ int	key_hook(int keycode, t_data *data)
 		ft_close(data);
 	color_background(data);
 	castrays(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->display.img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->render.display->img, 0, 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:08:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/13 14:13:13 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:56:38 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	ft_recup_map(t_data *data)
 	data->map.matrix[j] = NULL;
 }
 
-static int	create_rgb(int r, int g, int b)
+int	create_rgb(int r, int g, int b)
 {
 	int	tmp;
 
-	tmp = r << 16 | g << 8 | b;
+	tmp = (r << 16 | g << 8 | b);
 	return (tmp);
 }
 
