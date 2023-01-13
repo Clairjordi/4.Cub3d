@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:08:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/09 19:25:00 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:13:13 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,30 @@ void	ft_recup_map(t_data *data)
 	data->map.matrix[j] = NULL;
 }
 
+static int	create_rgb(int r, int g, int b)
+{
+	int	tmp;
+
+	tmp = r << 16 | g << 8 | b;
+	return (tmp);
+}
+
+/*recuperation de la couleur du sol et du plafond*/
+void	ft_recup_color_f_c(t_data *data)
+{
+	data->id.floor = create_rgb(data->id.f[0], data->id.f[1], data->id.f[2]);
+	data->id.ceiling = create_rgb(data->id.c[0], data->id.c[1], data->id.c[2]);
+}
+
 void	ft_check_recup_value(t_data *data, char *av)
 {
 	ft_recup_tab_file(data, av);
 	ft_recup_identifier(data);
 	check_map(data);
 	check_walls(data);
+	if (data->player.start != 'W' && data->player.start != 'E'
+		&& data->player.start != 'N' && data->player.start != 'S')
+		ft_error_free(data, "Possible start only from N, S, W, E");
 	ft_recup_map(data);
+	ft_recup_color_f_c(data);
 }

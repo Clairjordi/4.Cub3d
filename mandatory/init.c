@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:27:04 by mcloarec          #+#    #+#             */
-/*   Updated: 2023/01/09 19:03:42 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:49:13 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,36 @@ static void	ft_init_data(t_data *data)
 	data->endian = 0;
 }
 
+static void	ft_init_view(t_data *data)
+{
+	data->view.camerax = 0;
+	data->view.dirx = 0;
+	data->view.diry = 0;
+	data->view.planex = 0;
+	data->view.planey = 0;
+}
+
+/* static	void ft_init_ray(t_data *data) */
+/* { */
+/* 	data->ray.deltax = 0; */
+/* 	data->ray.deltay = 0; */
+/* 	data->ray.mapx = 0; */
+/* 	data->ray.mapy = 0; */
+/* 	data->ray.perpwalldist = -1; */
+/* 	data->ray.raydirx = 0; */
+/* 	data->ray.raydiry = 0; */
+/* 	data->ray.stepx = 0; */
+/* 	data->ray.stepy = 0; */
+/* 	data->ray.sidedistx = 0; */
+/* 	data->ray.sidedisty = 0; */
+/* } */
+
 void	ft_init_struct(t_data *data)
 {
 	ft_init_data(data);
 	ft_init_map(data);
 	ft_init_identifier(data);
 	ft_init_player(data);
+	//ft_init_ray(data);
+	ft_init_view(data);
 }

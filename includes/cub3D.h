@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/09 19:24:29 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:01:34 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # define ERROR -1
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720
-# define RAD M_PI / 180
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
+# define TEXTURE "../sprites_solong/item1.xpm"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -51,10 +53,24 @@ typedef struct s_view
 	double	planex;//représente le plan de la camera du joueur
 	double	planey;
 	double	camerax;
+} t_view;
+
+typedef struct s_ray
+{
+	double	sidedistx;
+	double	sidedisty;
+	double	deltax;
+	double	deltay;
 	double	raydirx;
 	double	raydiry;
-	double	fov;
-} t_view;
+	int		stepx;
+	int		stepy;
+	int		mapx;
+	int		mapy;
+	int		side;
+	int		hit;
+	double	perpwalldist;
+} t_ray;
 
 typedef struct s_identifier
 {
@@ -64,17 +80,29 @@ typedef struct s_identifier
 	char	*ea;
 	int		*f;
 	int		*c;
+	int		floor;
+	int		ceiling;
 }	t_id;
 
-// typedef struct s_imgs
-// {
-// 	void		*img;
-// 	int		*data;
-// 	int		pp;
-// 	int		l_length;
-// 	int		endian;
-// 	int		buffer[SCREEN_HEIGHT][SCREEN_WIDTH];
-// }	t_imgs;
+typedef struct s_imgs //struct pour le tableau de textures
+{
+	void	*img; // chaque image
+	int		width; // largeur utilise pour mlx_xpm_file_to_image
+	int		height; // hauteur utilise pour mlx_xpm_file_to_image
+/*variable a modifier*/	
+	int		texdir; //direction NO, S, EA, WE de la texture
+	double	wallx; //valeur où mur a été touché: coord y si side == 0, coord x si side == 1
+	int		texx; // coordonnée x de la texture
+	int		texy; // coordonée y de la texture
+	double	step; // indique de combien augmenter les coord de la texture pour chaque pixel
+	double	texpos; // coordonnée de départ
+	// variables pour mlx_get_data_addr
+	int		*addr; 
+	int		bpp;
+	int		l_length;
+	int		endian;
+	//
+}	t_imgs;
 
 typedef struct s_data
 {
@@ -86,11 +114,14 @@ typedef struct s_data
 	int			endian;
 	char		*addr;
 	char		**file_split;
+	t_imgs		texture[4]; //tableau avec les 4 textures
 	t_id		id;
 	t_map		map;
 	t_player	player;
 	t_view		view;
+	t_ray		ray;
 }	t_data;
+
 
 /*Init*/
 void		ft_init_struct(t_data *data);
@@ -130,11 +161,13 @@ void		ft_recup_tab_file(t_data *data, char *arg);
 //RAY_CASTING
 /*ray_casting*/
 void		ft_ray_casting(t_data *data);
+void	castrays(t_data *data);
 
 //WINDOW
 /*open_window*/
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		ft_open_window(t_data *data);
+void    color_background(t_data *data);
 /*close_window*/
 int			ft_close(t_data *data);
 void		ft_close_window(t_data *data);
