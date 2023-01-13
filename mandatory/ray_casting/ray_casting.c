@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:21:45 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/12 18:21:05 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:14:33 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,24 @@ void	ft_dda(t_data *data)
 		data->ray.perpwalldist = data->ray.sidedisty - data->ray.deltay;
 }
 
+void	ft_texture(t_data *data)
+{
+	int texNum = data->map.matrix[data->ray.mapx][data->ray.mapy] - 1;
+    double wallx;
+	int texx;
+	if (data->ray.side == 0)
+		wallx = data->player.py + data->ray.perpwalldist * data->ray.raydiry;
+    else
+		wallx = data->player.px + data->ray.perpwalldist * data->ray.raydirx;
+     wallx -= SCREEN_HEIGHT / 2;
+	 texx = wallx * (double)TEX_WIDTH;
+	 texx = (int)texx;
+     if(data->ray.side == 0 && data->ray.raydirx > 0)
+		 texx = TEX_WIDTH - texx - 1;
+	 if(data->ray.side == 1 && data->ray.raydirx < 0)
+		 texx = TEX_WIDTH - texx - 1;
+}
+
 void	color_walls(t_data *data, int start, int end, int x)
 {
 	int	color;
@@ -165,6 +183,16 @@ void	ft_walls(t_data *data, int x)
 	drawend = SCREEN_HEIGHT * 0.5 + line_height * 0.5;
 	if (drawend >= SCREEN_HEIGHT)
 		drawend = SCREEN_HEIGHT - 1;
+  	double step = 1.0 * TEXT_HEIGHT / line_height;
+    double texPos = (drawstart - SCREEN_HEIGHT / 2 + line_heighteight / 2) * step;
+    for(int y = drawstart; y < drawend; y++)
+      {
+        int texY = (int)texPos & (TEX_HEIGHT - 1);
+        texPos += step;
+        int textu = data->texture[texNum][TEX_HEIGHT * texY + texX];
+        if(side == 1) color = (color >> 1) & 8355711;
+        buffer[y][x] = color;
+      }
 	color_walls(data, drawstart, drawend, x);
 }
 
@@ -181,6 +209,7 @@ void	castrays(t_data *data)
 		data->ray.raydirx = data->view.dirx + data->view.planex * data->view.camerax;
 		data->ray.raydiry = data->view.diry + data->view.planey * data->view.camerax;
 		ft_dda(data);
+		ft_texture(data);
 		ft_walls(data, x);
 		x++;
 	}
