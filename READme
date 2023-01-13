@@ -33,11 +33,11 @@ ID:
 MAP:
 	si ID pas tous mis alors erreur
 	verifier si les caracteres ne sont seulement : 1, 0, N, S, E ou W
+	Verifier qu'il y ai une lettre de depart
 	position du player deja trouve, pas de possibilite d'en avoir une autre 
-	nombre de ligne + colonne avec gnl comparaison avec celui qui est split 
 	murs du haut et du bas fermés
 	murs des cotes fermés
-	murs non egaux :    111  doit etre fermés
-					 101101
-					 111111
+	murs non egaux :    111       doit etre fermés
+			      101101
+			      111111
 	pas de ligne que d'espace entre les ID et la MAP + pas a la fin du fichier
