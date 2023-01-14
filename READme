@@ -1,5 +1,12 @@
 CUB3D:
 
+nb argument < 1 et > 3
+.cub = error              // A FAIRE
+..cub = valide (fichier inexistant si pas creer avant)
+file.png = error
+lol.cub.c = error (car .c et non .cub)
+
+
 VERIFICATION PARSING:
 
 fichier vide
@@ -29,15 +36,20 @@ ID:
 			ok - path = verification des doublons
 
      ok - verifier que tous les identifiers sont remplis
+     si ID pas tous mis alors erreur
 
 MAP:
-	si ID pas tous mis alors erreur
+	espace dans la map
 	verifier si les caracteres ne sont seulement : 1, 0, N, S, E ou W
+	Seulement des 1 pour les murs
 	Verifier qu'il y ai une lettre de depart
-	position du player deja trouve, pas de possibilite d'en avoir une autre 
+	verifier qu'il n'y ai des doublons de depart
 	murs du haut et du bas fermés
 	murs des cotes fermés
 	murs non egaux :    111       doit etre fermés
 			      101101
 			      111111
 	pas de ligne que d'espace entre les ID et la MAP + pas a la fin du fichier
+	
+	
+	
