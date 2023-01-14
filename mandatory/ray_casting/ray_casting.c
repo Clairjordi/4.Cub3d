@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:21:45 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/13 19:31:22 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 09:19:11 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,8 +218,8 @@ int	ft_recup_rgb_pixel(t_data *data, void *texture, int texy)
 	r = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy + 2)];
 	color = create_rgb(r, g, b);
 
-	printf("b = %d g = %d r = %d / texx = %d texy = %d\n",
-			b, g, r,data->render.texx, texy);
+	//printf("b = %d g = %d r = %d / texx = %d texy = %d / color = %d\n",
+	//		b, g, r,data->render.texx, texy, color);
 	return (color);
 }
 
@@ -240,6 +240,8 @@ void	ft_draw_line(t_data *data, void *texture, int x)
 	{
 		//printf("texy = %f\n", data->render.texy);
 		color_pixel = ft_recup_rgb_pixel(data, texture, (int)data->render.texy);
+		if (color_pixel <= 0)
+			break ;
 		my_mlx_pixel_put(data->render.display, x, i, color_pixel);
 		data->render.texy += step;
 		i++;
@@ -257,6 +259,7 @@ void	ft_walls(t_data *data, int x) // changer pour noter ft_each_lines_walls
 	data->render.drawend = SCREEN_HEIGHT * 0.5 + data->render.line_height * 0.5;
 	if (data->render.drawend >= SCREEN_HEIGHT)
 		data->render.drawend = SCREEN_HEIGHT - 1;
+	//printf("%d\n", data->render.drawend - data->render.drawstart);
 	ft_get_texture_x(data);
 	texture = ft_choose_texture(data);
 	ft_draw_line(data, texture, x); 

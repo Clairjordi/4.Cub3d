@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/13 19:26:36 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 09:05:09 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 # define TRUE 0
 # define FALSE 1
 # define ERROR -1
-# define SCREEN_WIDTH 1280
-# define SCREEN_HEIGHT 720
-# define TEX_WIDTH 64
-# define TEX_HEIGHT 64
+# define SCREEN_WIDTH 500
+# define SCREEN_HEIGHT 250
+# define TEX_WIDTH 128
+# define TEX_HEIGHT 128
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -109,7 +109,7 @@ typedef struct s_renders //struct pour le tableau de textures + display + imgs
 	double	step; // indique de combien augmenter les coord de la texture pour chaque pixel
 	double	texpos; // coordonnée de départ
 	//	
-	t_display	display[1];
+	t_display	display[4];
 	int		drawend; // fin de la hauteur du mur
 	int		drawstart; // debut de la hauteur du mur
 	int		line_height; // hauteur du mur
