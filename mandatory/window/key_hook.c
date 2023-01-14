@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 10:46:05 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 14:25:53 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/14 16:54:02 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,18 @@ void	player_move_up_down(t_data *data, char c, double rot)
 	if (c == 'w')
 	{
 		if (data->map.matrix[(int)data->player.py]
-			[(int)(data->player.px + data->view.dirx * rot)] == '0')
+			[(int)(data->player.px + (data->view.dirx * rot) * 2)] == '0')
 			data->player.px += data->view.dirx * rot;
-		if (data->map.matrix[(int)(data->player.py + data->view.diry * rot)]
+		if (data->map.matrix[(int)(data->player.py + (data->view.diry * rot) * 2)]
 				[(int)data->player.px] == '0')
 			data->player.py += data->view.diry * rot;
 	}
 	else if (c == 's')
 	{
 		if (data->map.matrix[(int)data->player.py]
-			[(int)(data->player.px - data->view.dirx * rot)] == '0')
+			[(int)(data->player.px - (data->view.dirx * rot) * 2)] == '0')
 			data->player.px -= data->view.dirx * rot;
-		if (data->map.matrix[(int)(data->player.py - data->view.diry * rot)]
+		if (data->map.matrix[(int)(data->player.py - (data->view.diry * rot) * 2)]
 				[(int)data->player.px] == '0')
 			data->player.py -= data->view.diry * rot;
 	}
@@ -66,18 +66,18 @@ void	player_move_left_right(t_data *data, char c, double rot)
 	if (c == 'd')
 	{
 		if (data->map.matrix[(int)data->player.py]
-			[(int)(data->player.px + data->view.planex * rot)] == '0')
+			[(int)(data->player.px + (data->view.planex * rot) * 2)] == '0')
 			data->player.px += data->view.planex * rot;
-		if (data->map.matrix[(int)(data->player.py + data->view.planey * rot)]
+		if (data->map.matrix[(int)(data->player.py + (data->view.planey * rot) * 2)]
 				[(int)data->player.px] == '0')
 			data->player.py += data->view.planey * rot;
 	}
 	else if (c == 'a')
 	{
 		if (data->map.matrix[(int)data->player.py]
-			[(int)(data->player.px - data->view.planex * rot)] == '0')
+			[(int)(data->player.px - (data->view.planex * rot) * 2)] == '0')
 			data->player.px -= data->view.planex * rot;
-		if (data->map.matrix[(int)(data->player.py - data->view.planey * rot)]
+		if (data->map.matrix[(int)(data->player.py - (data->view.planey * rot) * 2)]
 				[(int)data->player.px] == '0')
 			data->player.py -= data->view.planey * rot;
 	}
