@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:56:14 by mcloarec          #+#    #+#             */
-/*   Updated: 2023/01/13 10:56:51 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/14 18:59:52 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,14 @@ int	check_file_name(char *str)
 	int	i;
 
 	i = 0;
+	printf("%s\n", str);
 	while (str[i] != '.')
 		i++;
 	if (i == 0 && str[i + 1] != '.')
 		return (FALSE);
-	if (!(ft_strnstr(str, ".cub", ft_strlen(str))))
+	else if (!(ft_strnstr(str, ".cub", ft_strlen(str))))
+		return (FALSE);
+	else if (str[i] == '.' && str[i + 1] != '.')
 		return (FALSE);
 	else
 		return (TRUE);
