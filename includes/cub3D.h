@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 09:05:09 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 12:02:42 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ typedef struct s_renders //struct pour le tableau de textures + display + imgs
 	double	step; // indique de combien augmenter les coord de la texture pour chaque pixel
 	double	texpos; // coordonnée de départ
 	//	
-	t_display	display[4];
+	t_display	*display;
 	int		drawend; // fin de la hauteur du mur
 	int		drawstart; // debut de la hauteur du mur
 	int		line_height; // hauteur du mur

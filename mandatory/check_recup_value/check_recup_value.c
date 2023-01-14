@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:08:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/13 18:56:38 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 10:31:05 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	create_rgb(int r, int g, int b)
 {
 	int	tmp;
 
+	tmp = 0;
 	tmp = (r << 16 | g << 8 | b);
 	return (tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:21:45 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 09:19:11 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 13:36:54 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,35 +191,31 @@ void	*ft_choose_texture(t_data *data)
 		tmp = data->imgs.no;
 	if (data->ray.side == 1 && data->ray.raydiry < 0)
 		tmp = data->imgs.so;
-
 	return (tmp);
 }
 
 int	ft_recup_rgb_pixel(t_data *data, void *texture, int texy)
 {
-	int	b;
-	int	g;
-	int	r;
-	int	color;
+	unsigned char	b;
+	unsigned char	g;
+	unsigned char	r;
+	unsigned int	color;
 	t_display	*d;
 
 	d = data->render.display;
 	d->addr = mlx_get_data_addr(texture, &d->bpp,
 			&d->l_length, &d->endian);
-	/* double	pix =  (data->render.texx * 4) + (TEX_HEIGHT * 4 * texy); */
-	/* if (pix < 0) */
-	/* { */
-	/* 	color = data->id.ceiling; */
-	/* 	return (color); */
-	/* } */
+	double	pix =  (data->render.texx * 4) + (TEX_HEIGHT * 4 * texy);
+	if (pix < 0)
+	{
+		color = data->id.ceiling;
+		return (color);
+	}
 
 	b = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy)];
 	g = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy + 1)];
 	r = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy + 2)];
 	color = create_rgb(r, g, b);
-
-	//printf("b = %d g = %d r = %d / texx = %d texy = %d / color = %d\n",
-	//		b, g, r,data->render.texx, texy, color);
 	return (color);
 }
 
@@ -240,10 +236,9 @@ void	ft_draw_line(t_data *data, void *texture, int x)
 	{
 		//printf("texy = %f\n", data->render.texy);
 		color_pixel = ft_recup_rgb_pixel(data, texture, (int)data->render.texy);
-		if (color_pixel <= 0)
-			break ;
 		my_mlx_pixel_put(data->render.display, x, i, color_pixel);
 		data->render.texy += step;
+		printf("texy = %f\n", data->render.texy);
 		i++;
 	}
 }
@@ -252,7 +247,7 @@ void	ft_walls(t_data *data, int x) // changer pour noter ft_each_lines_walls
 {
 	void	*texture;
 
-	data->render.line_height = (int)(SCREEN_HEIGHT / data->ray.perpwalldist);
+	data->render.line_height = SCREEN_HEIGHT / data->ray.perpwalldist;
 	data->render.drawstart = SCREEN_HEIGHT * 0.5 - data->render.line_height * 0.5;
 	if (data->render.drawstart < 0)
 		data->render.drawstart = 0;

@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:27:04 by mcloarec          #+#    #+#             */
-/*   Updated: 2023/01/13 17:45:44 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 12:24:45 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	ft_init_struct(t_data *data)
 	/* data->display = malloc(sizeof(t_display)); */
 	/* if (!data->display) */
 	/* 	ft_error_free(data, "Malloc"); */
-	/* data->render.display = malloc(sizeof(t_display));	 */
-	/* if (!data->render.display) */
-	/* 	ft_error_free(data, "Malloc"); */
+	data->render.display = malloc(sizeof(t_display));	
+	if (!data->render.display)
+		ft_error_free(data, "Malloc");
 	ft_init_display(&data->display);
 	ft_init_display(data->render.display);
 }
