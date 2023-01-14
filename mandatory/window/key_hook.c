@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 10:46:05 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 13:49:24 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:25:53 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,44 +41,19 @@ void	plane_move(t_data *data, char c, double rot)
 
 void	player_move_up_down(t_data *data, char c, double rot)
 {
-	/* (void)rot; */
-	/* if (c =='s' && data->view.diry < 0) */
-	/* { */
-	/* 	if (data->map.matrix[(int)data->player.py] */
-	/* 			[(int)data->player.px + 1] == '0') */
-	/* 		data->player.py += 1; */
-	/* } */
-	/* else if ((c =='w' && data->view.diry < 0)) */
-	/* { */
-	/* 	if (data->map.matrix[(int)data->player.py] */
-	/* 			[(int)data->player.px] == '0') */
-	/* 		data->player.py -= 1; */
-	/* } */
-	/* else if (c =='s' && data->view.diry > 0) */
-	/* { */
-	/* 	if (data->map.matrix[(int)data->player.py] */
-	/* 			[(int)data->player.px + 1] == '0') */
-	/* 		data->player.py += 1; */
-	/* } */
-	/* else if (c =='w' && data->view.diry > 0) */
-	/* { */
-	/* 	if (data->map.matrix[(int)data->player.py] */
-	/* 			[(int)data->player.px - 1] == '0') */
-	/* 		data->player.py -= 1; */
-	/* } */
-	if (c =='w')
+	if (c == 'w')
 	{
 		if (data->map.matrix[(int)data->player.py]
-				[(int)(data->player.px + data->view.dirx * rot)] == '0')
+			[(int)(data->player.px + data->view.dirx * rot)] == '0')
 			data->player.px += data->view.dirx * rot;
 		if (data->map.matrix[(int)(data->player.py + data->view.diry * rot)]
 				[(int)data->player.px] == '0')
 			data->player.py += data->view.diry * rot;
 	}
-	else if (c =='s')
+	else if (c == 's')
 	{
 		if (data->map.matrix[(int)data->player.py]
-				[(int)(data->player.px - data->view.dirx * rot)] == '0')
+			[(int)(data->player.px - data->view.dirx * rot)] == '0')
 			data->player.px -= data->view.dirx * rot;
 		if (data->map.matrix[(int)(data->player.py - data->view.diry * rot)]
 				[(int)data->player.px] == '0')
@@ -88,45 +63,19 @@ void	player_move_up_down(t_data *data, char c, double rot)
 
 void	player_move_left_right(t_data *data, char c, double rot)
 {
-	/* (void) rot; */
-	/* if (c =='d' && data->view.diry < 0) */
-	/* { */
-	/* 	if (data->map.matrix[(int)data->player.py + 1] */
-	/* 			[(int)data->player.px] == '0') */
-	/* 		data->player.px += 1; */
-	/* } */
-	/* else if (c =='a' && data->view.diry < 0) */
-	/* { */
-	/* 	if (data->map.matrix[(int)data->player.py - 1] */
-	/* 			[(int)data->player.px] == '0') */
-	/* 		data->player.px -= 1; */
-	/* } */
-	/* else if (c =='a' && data->view.diry > 0) */
-	/* { */
-	/* 	if (data->map.matrix[(int)data->player.py + 1] */
-	/* 			[(int)data->player.px] == '0') */
-	/* 		data->player.px += 1; */
-	/* } */
-	/* else if (c =='d' && data->view.diry > 0) */
-	/* { */
-	/* 	if (data->map.matrix[(int)data->player.py - 1] */
-	/* 			[(int)data->player.px] == '0') */
-	/* 		data->player.px -= 1; */
-	/* } */
-    /*  */
-	if (c =='d')
+	if (c == 'd')
 	{
 		if (data->map.matrix[(int)data->player.py]
-				[(int)(data->player.px + data->view.planex * rot)] == '0')
+			[(int)(data->player.px + data->view.planex * rot)] == '0')
 			data->player.px += data->view.planex * rot;
 		if (data->map.matrix[(int)(data->player.py + data->view.planey * rot)]
 				[(int)data->player.px] == '0')
 			data->player.py += data->view.planey * rot;
 	}
-	else if (c =='a')
+	else if (c == 'a')
 	{
 		if (data->map.matrix[(int)data->player.py]
-				[(int)(data->player.px - data->view.planex * rot)] == '0')
+			[(int)(data->player.px - data->view.planex * rot)] == '0')
 			data->player.px -= data->view.planex * rot;
 		if (data->map.matrix[(int)(data->player.py - data->view.planey * rot)]
 				[(int)data->player.px] == '0')
@@ -139,18 +88,16 @@ int	key_hook(int keycode, t_data *data)
 	double	rot;
 
 	rot = 30 * (M_PI / 180);
-
-	if (data->map.matrix[(int)data->player.py][(int)data->player.px] == data->player.start)
+	if (data->map.matrix[(int)data->player.py]
+		[(int)data->player.px] == data->player.start)
 		data->map.matrix[(int)data->player.py][(int)data->player.px] = '0';
-	//rotation camera seulement avec arrow right and left
 	if (keycode == XK_Left)
 		plane_move(data, 'l', rot);
 	else if (keycode == XK_Right)
 		plane_move(data, 'r', rot);
-	//Mouvement du player seulement avec W,A,S,D
-	else if (keycode == XK_a )
+	else if (keycode == XK_a)
 		player_move_left_right(data, 'a', rot);
-	else if (keycode == XK_d )
+	else if (keycode == XK_d)
 		player_move_left_right(data, 'd', rot);
 	else if (keycode == XK_w)
 		player_move_up_down(data, 'w', rot);
