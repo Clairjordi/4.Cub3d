@@ -1,10 +1,10 @@
-NO ./textures/no.xpm
-SO ./textures/so.xpm
-EA ./textures/ea.xpm
-WE ./textures/we.xpm
+NO ./sprites_solong/no.xpm
+SO ./sprites_solong/so.xpm
+EA ./sprites_solong/ea.xpm
+WE ./sprites_solong/we.xpm
 
-C 102,255,255
-F 204,153,102
+C 0, 201, 255
+F 227, 213, 154
 
 111111111111111111
 110000000000000111
