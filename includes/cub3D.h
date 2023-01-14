@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 14:05:12 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:02:20 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ typedef struct s_player
 typedef struct s_view
 {
 	double	angle;
-	double	dirx;//représente la direction du joueur
+	double	dirx;
 	double	diry;
-	double	planex;//représente le plan de la camera du joueur
+	double	planex;
 	double	planey;
 	double	camerax;
 }	t_view;
@@ -93,7 +93,6 @@ typedef struct s_imgs
 
 typedef struct s_display
 {
-	// variables pour mlx_get_data_addr
 	void	*img;
 	char	*addr;
 	int		bpp;
@@ -101,21 +100,15 @@ typedef struct s_display
 	int		endian;
 }	t_display;
 
-//a voir le nom de cette structure
-typedef struct s_renders //struct pour le tableau de textures + display + imgs
+typedef struct s_renders
 {
-	/*variable inutile ?*/	
-	int		texdir; //direction NO, S, EA, WE de la texture
-	double	step; // indique de combien augmenter les coord de la texture pour chaque pixel
-	double	texpos; // coordonnée de départ
-	//	
 	t_display	*display;
-	int		drawend; // fin de la hauteur du mur
-	int		drawstart; // debut de la hauteur du mur
-	int		line_height; // hauteur du mur
-	double	wallx; //valeur où mur a été touché: coord y si side == 0, coord x si side == 1
-	int		texx; // coordonnée x de la texture
-	double		texy; // coordonée y de la texture
+	int			drawend;
+	int			drawstart;
+	int			line_height;
+	double		wallx;
+	int			texx;
+	double		texy;
 }	t_render;
 
 typedef struct s_data
@@ -135,66 +128,86 @@ typedef struct s_data
 
 /*Init*/
 void		ft_init_struct(t_data *data);
+void		ft_init_display(t_display *display);
+void		ft_init_view(t_data *data);
 
 //CHECK_RECUP_VALUE
+/*Check*/
+void		check_valid_char(t_data *data, char c, int y, int x);
+void		check_map(t_data *data);
+int			check_file_name(char *str);
 /*Check_recup_value*/
-void		ft_check_recup_value(t_data *data, char *av);
 void		ft_recup_map(t_data *data);
 void		ft_recup_color_f_c(t_data *data);
-int 		create_rgb(int r, int g, int b);
-/*Check*/
-int			check_file_name(char *str);
-void		check_map(t_data *data);
-void		check_valid_char(t_data *data, char c, int y, int x);
+void		ft_pos_player(t_data *data);
+void		ft_check_recup_value(t_data *data, char *av);
 /*Check Walls*/
 void		check_non_even_walls(t_data *data, int i);
 void		check_up_down_walls(t_data *data, char **s, int *j);
 void		check_side_walls(t_data *data, char **s, int *j);
 void		check_walls(t_data *data);
-/*recup_identifier*/
+/*Recup_identifier*/
 void		ft_check_first_letter(t_data *data, char c);
 void		ft_check_name_id(t_data *data, char *s);
 void		ft_check_id_bottom_file(t_data *data);
 void		ft_recup_identifier(t_data *data);
-/*recup_identifier_bis*/
+/*Recup_identifier_bis*/
 void		ft_verif_ext_file_path(t_data *data, char c);
 void		ft_add_path_id(t_data *data, char *id, char c);
 void		ft_check_value_id_and_add(t_data *data, char *s, char c);
-/*recup_identifier_add_value*/
+/*Recup_identifier_add_value*/
 void		ft_add_id(t_data *data, char *id, char c);
+/*Recup_file*/
+int			check_file(t_data *data, char *s);
+void		ft_recup_tab_file(t_data *data, char *arg);
 /*Utils_id*/
 char		*ft_charjoin(t_data *data, char *s1, char c);
 /*Utils_id_bis*/
 char		*ft_strdup_cub(t_data *data, char *s);
 long long	ft_atoll_cub(t_data *data, char *nptr);
-/*recup_file*/
-void		ft_recup_tab_file(t_data *data, char *arg);
 
 //RAY_CASTING
-/*ray_casting*/
+/*Init_ray*/
+void		angle_from_position(t_data *data);
+void		ft_sidedist(t_data *data);
+/*Ray_casting*/
+void		ft_dda(t_data *data);
+void		ft_dda_bis(t_data *data);
+void		castrays(t_data *data);
+void		ft_create_walls(t_data *data, int x);
 void		ft_ray_casting(t_data *data);
-void	castrays(t_data *data);
+/*Texture*/
+void		init_images(t_data *data);
+void		ft_get_texture_x(t_data *data);
+void		*ft_choose_texture(t_data *data);
+int			ft_recup_rgb_pixel(t_data *data, void *texture, int texy);
+void		ft_draw_line(t_data *data, void *texture, int x);
 
 //WINDOW
-/*open_window*/
+/*Open_window*/
 void		my_mlx_pixel_put(t_display *display, int x, int y, int color);
+void		color_background(t_data *data);
 void		ft_open_window(t_data *data);
-void    	color_background(t_data *data);
-/*close_window*/
+/*Close_window*/
+void		ft_destroy_images(t_data *data);
 int			ft_close(t_data *data);
 void		ft_close_window(t_data *data);
-/*key_hook*/
+/*Key_hook*/
+void		plane_move(t_data *data, char c, double rot);
+void		player_move_up_down(t_data *data, char c, double rot);
+void		player_move_left_right(t_data *data, char c, double rot);
 int			key_hook(int keycode, t_data *data);
 /*Utils*/
+int			create_rgb(int r, int g, int b);
 int			ft_isspace(char c);
 
 //FREE
-/*free*/
+/*Free*/
 void		ft_free_identifier(t_data *data);
 void		ft_free_data(t_data *data);
 void		ft_free_map(t_data *data);
 void		ft_free(t_data *data);
-/*exit*/
+/*Exit*/
 void		ft_error_free(t_data *data, char *str);
 
 #endif

@@ -6,13 +6,12 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:08:38 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 10:31:05 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:42:49 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-/*calcul du nombre de ligne pour le malloc char* de la map*/
 static int	ft_size_map(char **map)
 {
 	int	i;
@@ -28,7 +27,6 @@ static int	ft_size_map(char **map)
 	return (size);
 }
 
-/*recuperation de la map seule dans data->map.matrix*/
 void	ft_recup_map(t_data *data)
 {
 	int	i;
@@ -48,20 +46,35 @@ void	ft_recup_map(t_data *data)
 	data->map.matrix[j] = NULL;
 }
 
-int	create_rgb(int r, int g, int b)
-{
-	int	tmp;
-
-	tmp = 0;
-	tmp = (r << 16 | g << 8 | b);
-	return (tmp);
-}
-
-/*recuperation de la couleur du sol et du plafond*/
 void	ft_recup_color_f_c(t_data *data)
 {
 	data->id.floor = create_rgb(data->id.f[0], data->id.f[1], data->id.f[2]);
 	data->id.ceiling = create_rgb(data->id.c[0], data->id.c[1], data->id.c[2]);
+}
+
+void	ft_pos_player(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->map.matrix[i])
+	{
+		j = 0;
+		while (data->map.matrix[i][j])
+		{
+			if (data->map.matrix[i][j] == 'N' || data->map.matrix[i][j] == 'S'
+				||data->map.matrix[i][j] == 'E'
+				|| data->map.matrix[i][j] == 'W')
+			{
+				data->player.px = j + 0.5;
+				data->player.py = i + 0.5;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 void	ft_check_recup_value(t_data *data, char *av)
@@ -75,4 +88,5 @@ void	ft_check_recup_value(t_data *data, char *av)
 		ft_error_free(data, "Possible start only from N, S, W, E");
 	ft_recup_map(data);
 	ft_recup_color_f_c(data);
+	ft_pos_player(data);
 }

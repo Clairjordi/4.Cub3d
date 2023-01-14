@@ -6,7 +6,7 @@
 #    By: clorcery <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 16:08:31 by clorcery          #+#    #+#              #
-#    Updated: 2023/01/09 19:24:10 by clorcery         ###   ########.fr        #
+#    Updated: 2023/01/14 15:05:56 by mcloarec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,11 @@ SRCS = mandatory/main.c \
 	   mandatory/window/key_hook.c \
 	   mandatory/window/close_window.c \
 	   mandatory/ray_casting/ray_casting.c \
+	   mandatory/ray_casting/texture.c \
+	   mandatory/ray_casting/init_ray.c \
 	   mandatory/utils.c \
 	   mandatory/init.c \
+	   mandatory/init_bis.c \
 	   mandatory/free/free.c \
 	   mandatory/free/exit.c
 

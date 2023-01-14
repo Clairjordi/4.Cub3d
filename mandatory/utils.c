@@ -6,11 +6,20 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:40:25 by mcloarec          #+#    #+#             */
-/*   Updated: 2022/12/19 15:47:07 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:41:38 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+int	create_rgb(int r, int g, int b)
+{
+	int	tmp;
+
+	tmp = 0;
+	tmp = (r << 16 | g << 8 | b);
+	return (tmp);
+}
 
 int	ft_isspace(char c)
 {

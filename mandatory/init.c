@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:27:04 by mcloarec          #+#    #+#             */
-/*   Updated: 2023/01/14 14:11:07 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:33:27 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	ft_init_map(t_data *data)
 static void	ft_init_data(t_data *data)
 {
 	data->file_split = NULL;
+	data->mlx = NULL;
 }
 
 void	ft_init_struct(t_data *data)

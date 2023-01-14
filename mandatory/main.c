@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:44:24 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 13:49:08 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:30:59 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	main(int argc, char **argv)
 		ft_error(".cub file not found");
 	if (check_file_name(argv[1]) == FALSE)
 		ft_error("wrong format");
-	data.mlx = mlx_init();
 	ft_init_struct(&data);
 	ft_check_recup_value(&data, argv[1]);
+	data.mlx = mlx_init();
 	ft_open_window(&data);
 	ft_ray_casting(&data);
 	mlx_put_image_to_window(data.mlx, data.win, data.display.img, 0, 0);
