@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 10:48:31 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 12:04:16 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/14 13:49:16 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_destroy_images(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->display.img);
-	mlx_destroy_image(data->mlx, data->render.display->img);
 	mlx_destroy_image(data->mlx, data->imgs.no);
 	mlx_destroy_image(data->mlx, data->imgs.so);
 	mlx_destroy_image(data->mlx, data->imgs.we);

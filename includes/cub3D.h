@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 12:02:42 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:05:12 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # define TRUE 0
 # define FALSE 1
 # define ERROR -1
-# define SCREEN_WIDTH 500
-# define SCREEN_HEIGHT 250
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 720
 # define TEX_WIDTH 128
 # define TEX_HEIGHT 128
 

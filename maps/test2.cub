@@ -1,7 +1,7 @@
-NO ./sprites_solong/grass.xpm
-SO ./sprites_solong/grass.xpm
-EA ./sprites_solong/grass.xpm
-WE ./sprites_solong/grass.xpm
+NO ./sprites_solong/north.xpm
+SO ./sprites_solong/south.xpm
+EA ./sprites_solong/east.xpm
+WE ./sprites_solong/west.xpm
 
 C 102,255,255
 F 204,153,102

@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:21:45 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 13:36:54 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:06:27 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,9 +187,9 @@ void	*ft_choose_texture(t_data *data)
 	if (data->ray.side == 0 && data->ray.raydirx < 0)
 		tmp = data->imgs.we;
 	// peut etre devoir inverse le nord et le sud car diry dans angle_for_position est inverse
-	if (data->ray.side == 1 && data->ray.raydiry > 0)
-		tmp = data->imgs.no;
 	if (data->ray.side == 1 && data->ray.raydiry < 0)
+		tmp = data->imgs.no;
+	if (data->ray.side == 1 && data->ray.raydiry > 0)
 		tmp = data->imgs.so;
 	return (tmp);
 }
@@ -205,12 +205,12 @@ int	ft_recup_rgb_pixel(t_data *data, void *texture, int texy)
 	d = data->render.display;
 	d->addr = mlx_get_data_addr(texture, &d->bpp,
 			&d->l_length, &d->endian);
-	double	pix =  (data->render.texx * 4) + (TEX_HEIGHT * 4 * texy);
-	if (pix < 0)
-	{
-		color = data->id.ceiling;
-		return (color);
-	}
+	/* double	pix =  (data->render.texx * 4) + (TEX_HEIGHT * 4 * texy); */
+	/* if (pix < 0) */
+	/* { */
+	/* 	color = data->id.ceiling; */
+	/* 	return (color); */
+	/* } */
 
 	b = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy)];
 	g = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy + 1)];
@@ -234,11 +234,9 @@ void	ft_draw_line(t_data *data, void *texture, int x)
 			+ data->render.line_height * 0.5) * step;
 	while (i < data->render.drawend)
 	{
-		//printf("texy = %f\n", data->render.texy);
 		color_pixel = ft_recup_rgb_pixel(data, texture, (int)data->render.texy);
-		my_mlx_pixel_put(data->render.display, x, i, color_pixel);
+		my_mlx_pixel_put(&data->display, x, i, color_pixel);
 		data->render.texy += step;
-		printf("texy = %f\n", data->render.texy);
 		i++;
 	}
 }
@@ -254,7 +252,6 @@ void	ft_walls(t_data *data, int x) // changer pour noter ft_each_lines_walls
 	data->render.drawend = SCREEN_HEIGHT * 0.5 + data->render.line_height * 0.5;
 	if (data->render.drawend >= SCREEN_HEIGHT)
 		data->render.drawend = SCREEN_HEIGHT - 1;
-	//printf("%d\n", data->render.drawend - data->render.drawstart);
 	ft_get_texture_x(data);
 	texture = ft_choose_texture(data);
 	ft_draw_line(data, texture, x); 
