@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 14:05:12 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:18:39 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define ERROR -1
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720
-# define TEX_WIDTH 128
+# define TEX_WIDTH 64
 # define TEX_HEIGHT 128
 
 # include <unistd.h>

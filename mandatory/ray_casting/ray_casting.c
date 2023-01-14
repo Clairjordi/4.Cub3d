@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:21:45 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 14:06:27 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:24:34 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,16 +278,21 @@ void	castrays(t_data *data)
 
 void	init_images(t_data *data)
 {
-	int	width;
-	int	height;
+	int	w;
+	int	h;
 
-	data->imgs.no = mlx_xpm_file_to_image(data->mlx, data->id.no, &width, &height);
+	data->imgs.no = mlx_xpm_file_to_image(data->mlx, data->id.no, &w, &h);
 	if (!data->imgs.no)
-		ft_error_free(data, "Malloc");
-	data->imgs.so = mlx_xpm_file_to_image(data->mlx, data->id.so, &width, &height);
-	data->imgs.we = mlx_xpm_file_to_image(data->mlx, data->id.we, &width, &height);
-	data->imgs.ea = mlx_xpm_file_to_image(data->mlx, data->id.ea, &width, &height);
-	//checker la taille des images, si != TEX_WIDTH et TEX_HEIGHT alors erreurs	
+		ft_error_free(data, "Wrong xpm size");
+	data->imgs.so = mlx_xpm_file_to_image(data->mlx, data->id.so, &w, &h);
+	if (w != TEX_WIDTH || h != TEX_HEIGHT)
+		ft_error_free(data, "Wrong xpm size");
+	data->imgs.we = mlx_xpm_file_to_image(data->mlx, data->id.we, &w, &h);
+	if (w != TEX_WIDTH || h != TEX_HEIGHT)
+		ft_error_free(data, "Wrong xpm size");
+	data->imgs.ea = mlx_xpm_file_to_image(data->mlx, data->id.ea, &w, &h);
+	if (w != TEX_WIDTH || h != TEX_HEIGHT)
+		ft_error_free(data, "Wrong xpm size");
 }
 
 void	ft_ray_casting(t_data *data)
