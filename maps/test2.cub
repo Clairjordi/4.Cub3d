@@ -1,7 +1,7 @@
-NO ./sprites_solong/north.xpm
-SO ./sprites_solong/south.xpm
-EA ./sprites_solong/east.xpm
-WE ./sprites_solong/west.xpm
+NO ./textures/no.xpm
+SO ./textures/so.xpm
+EA ./textures/ea.xpm
+WE ./textures/we.xpm
 
 C 102,255,255
 F 204,153,102
