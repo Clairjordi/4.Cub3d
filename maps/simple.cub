@@ -1,10 +1,10 @@
-NO ./sprites_solong/grass.xpm
-SO ./sprites_solong/grass.xpm
-EA ./sprites_solong/grass.xpm
-WE ./sprites_solong/grass.xpm
+NO ./sprites_solong/no.xpm
+SO ./sprites_solong/so.xpm
+EA ./sprites_solong/ea.xpm
+WE ./sprites_solong/we.xpm
 
-C 1,255,0
-F 255,1,0
+C 0, 201,255
+F 227, 213,154
 
 111111111111
 100100000001

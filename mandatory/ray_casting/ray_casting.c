@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:21:45 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 15:08:41 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/14 17:33:47 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	ft_dda_bis(t_data *data)
 {
 	while (data->ray.hit != 1)
 	{
+		if (data->map.matrix[data->ray.mapy][data->ray.mapx] == '1')
+		{
+			data->ray.hit = 1;
+			break ;
+		}
 		if (data->ray.sidedistx < data->ray.sidedisty)
 		{
 			data->ray.sidedistx += data->ray.deltax;
@@ -31,10 +36,6 @@ void	ft_dda_bis(t_data *data)
 		if (data->map.matrix[data->ray.mapy][data->ray.mapx] == '1')
 			data->ray.hit = 1;
 	}
-	if (data->ray.side == 0)
-		data->ray.perpwalldist = data->ray.sidedistx - data->ray.deltax;
-	else
-		data->ray.perpwalldist = data->ray.sidedisty - data->ray.deltay;
 }
 
 void	ft_dda(t_data *data)
@@ -53,6 +54,10 @@ void	ft_dda(t_data *data)
 		data->ray.deltay = fabs(1 / data->ray.raydiry);
 	ft_sidedist(data);
 	ft_dda_bis(data);
+	if (data->ray.side == 0)
+		data->ray.perpwalldist = data->ray.sidedistx - data->ray.deltax;
+	else
+		data->ray.perpwalldist = data->ray.sidedisty - data->ray.deltay;
 }
 
 void	castrays(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:38:51 by mcloarec          #+#    #+#             */
-/*   Updated: 2023/01/14 15:04:09 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/14 17:23:27 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,19 @@ int	ft_recup_rgb_pixel(t_data *data, void *texture, int texy)
 	unsigned char	b;
 	unsigned char	g;
 	unsigned char	r;
-	unsigned int	color;
+	int				color;
 	t_display		*d;
 
 	d = data->render.display;
 	d->addr = mlx_get_data_addr(texture, &d->bpp,
 			&d->l_length, &d->endian);
+	color = (data->render.texx * 4) + (TEX_HEIGHT * 4 * texy);
+	if (color < 0)
+	{
+		color = data->id.ceiling;
+		return (color);
+	}
+	color = 0;
 	b = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy)];
 	g = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy + 1)];
 	r = d->addr[(data->render.texx * 4) + (TEX_HEIGHT * 4 * texy + 2)];
