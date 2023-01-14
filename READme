@@ -1,10 +1,11 @@
 CUB3D:
 
 nb argument < 1 et > 3
-.cub = error              // A FAIRE
-..cub = valide (fichier inexistant si pas creer avant)
-file.png = error
-lol.cub.c = error (car .c et non .cub)
+ok - .cub = error (autant fichier que directory)
+ok - file.png = error
+ok - lol.cub.c = error (car .c et non .cub)
+ok - ..cub = valide (fichier inexistant si pas creer avant)
+
 
 
 VERIFICATION PARSING:
@@ -14,7 +15,7 @@ fichier vide
 ID:
 		AVANT de mettre dans id : 
 			ok - verifier si 1ere lettre ok
-			ok - path/color = pas de txt en fin de fichier ex : "    NO[...]" ou 										     "fanfan[..]"
+			ok - path/color = pas de txt en fin ou debut de fichier ex : "    NO[...]" ou 										     "fanfan[..]"
 			ok - path/color = verifier que id bien ecris
 			ok - path/color = pas d'espace avant identifier
 			ok - path/color = value id vide

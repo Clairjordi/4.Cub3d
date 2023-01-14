@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 16:03:35 by clorcery          #+#    #+#             */
-/*   Updated: 2022/12/21 13:28:20 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/14 18:44:24 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	ft_check_value_id_and_add(t_data *data, char *s, char c)
 	value = NULL;
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 	{
+		if (s[3] != '.')
+			ft_error_free(data, "Invalid file path texture");
 		value = ft_strchr(s, '.');
 		fd = open(value, O_RDONLY);
 		if (fd < 0)
