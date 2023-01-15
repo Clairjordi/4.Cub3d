@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:38:51 by mcloarec          #+#    #+#             */
-/*   Updated: 2023/01/14 17:23:27 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:06:15 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,15 @@ void	init_images(t_data *data)
 	int	h;
 
 	data->imgs.no = mlx_xpm_file_to_image(data->mlx, data->id.no, &w, &h);
-	if (!data->imgs.no)
-		ft_error_free(data, "Wrong xpm size");
+	if (w != TEX_WIDTH || h != TEX_HEIGHT)
+		ft_error_free_close(data, "Wrong xpm size");
 	data->imgs.so = mlx_xpm_file_to_image(data->mlx, data->id.so, &w, &h);
 	if (w != TEX_WIDTH || h != TEX_HEIGHT)
-		ft_error_free(data, "Wrong xpm size");
+		ft_error_free_close(data, "Wrong xpm size");
 	data->imgs.we = mlx_xpm_file_to_image(data->mlx, data->id.we, &w, &h);
 	if (w != TEX_WIDTH || h != TEX_HEIGHT)
-		ft_error_free(data, "Wrong xpm size");
+		ft_error_free_close(data, "Wrong xpm size");
 	data->imgs.ea = mlx_xpm_file_to_image(data->mlx, data->id.ea, &w, &h);
 	if (w != TEX_WIDTH || h != TEX_HEIGHT)
-		ft_error_free(data, "Wrong xpm size");
+		ft_error_free_close(data, "Wrong xpm size");
 }

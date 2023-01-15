@@ -6,7 +6,7 @@
 /*   By: mcloarec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:56:14 by mcloarec          #+#    #+#             */
-/*   Updated: 2023/01/13 10:56:51 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/15 10:12:30 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,26 @@ void	check_map(t_data *data)
 int	check_file_name(char *str)
 {
 	int	i;
+	int	len;
 
 	i = 0;
 	while (str[i] != '.')
 		i++;
 	if (i == 0 && str[i + 1] != '.')
 		return (FALSE);
+	else if (!ft_isalnum(str[i - 1]) && str[i + 1] != '.')
+		return (FALSE);
+	len = 0;
+	while (str[i])
+	{
+		len++;
+		i++;
+	}
 	if (!(ft_strnstr(str, ".cub", ft_strlen(str))))
+		return (FALSE);
+	else if (len < 4)
+		return (FALSE);
+	else if (str[i - 1] != 'b')
 		return (FALSE);
 	else
 		return (TRUE);

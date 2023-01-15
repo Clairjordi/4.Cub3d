@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 17:05:57 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:08:31 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <stdio.h>
-# include <stdbool.h>
 # include <math.h>
 # include "../libft/all_h.h"
 # include "../minilibx/mlx.h"
@@ -46,7 +44,6 @@ typedef struct s_player
 
 typedef struct s_view
 {
-	double	angle;
 	double	dirx;
 	double	diry;
 	double	planex;
@@ -208,6 +205,7 @@ void		ft_free_data(t_data *data);
 void		ft_free_map(t_data *data);
 void		ft_free(t_data *data);
 /*Exit*/
+void		ft_error_free_close(t_data *data, char *str);
 void		ft_error_free(t_data *data, char *str);
 
 #endif

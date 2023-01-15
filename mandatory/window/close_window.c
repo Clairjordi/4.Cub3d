@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 10:48:31 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 14:21:39 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:02:05 by clorcery         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 void	ft_destroy_images(t_data *data)
 {
-	mlx_destroy_image(data->mlx, data->display.img);
-	mlx_destroy_image(data->mlx, data->imgs.no);
-	mlx_destroy_image(data->mlx, data->imgs.so);
-	mlx_destroy_image(data->mlx, data->imgs.we);
-	mlx_destroy_image(data->mlx, data->imgs.ea);
+	if (data->display.img != NULL)
+		mlx_destroy_image(data->mlx, data->display.img);
+	if (data->imgs.no != NULL)
+		mlx_destroy_image(data->mlx, data->imgs.no);
+	if (data->imgs.so != NULL)
+		mlx_destroy_image(data->mlx, data->imgs.so);
+	if (data->imgs.we != NULL)
+		mlx_destroy_image(data->mlx, data->imgs.we);
+	if (data->imgs.ea != NULL)
+		mlx_destroy_image(data->mlx, data->imgs.ea);
 }
 
 int	ft_close(t_data *data)
