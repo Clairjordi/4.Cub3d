@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:21:45 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/14 18:22:29 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/15 18:34:49 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void	ft_create_walls(t_data *data, int x)
 	data->render.drawend = SCREEN_HEIGHT * 0.5 + data->render.line_height * 0.5;
 	if (data->render.drawend >= SCREEN_HEIGHT)
 		data->render.drawend = SCREEN_HEIGHT - 1;
-	ft_get_texture_x(data);
 	texture = ft_choose_texture(data);
+	ft_get_texture_x(data);
 	ft_draw_line(data, texture, x);
 }
 

@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 20:46:50 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/15 17:27:49 by mcloarec         ###   ########.fr       */
+/*   Updated: 2023/01/15 18:49:47 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # define ERROR -1
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720
-# define TEX_WIDTH 64
-# define TEX_HEIGHT 64
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -82,10 +80,9 @@ typedef struct s_identifier
 
 typedef struct s_imgs
 {
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
+	void	*img;
+	int		w;
+	int		h;
 }	t_imgs;
 
 typedef struct s_display
@@ -112,8 +109,9 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
-	char		**file_split;	
-	t_imgs		imgs;
+	char		**file_split;
+	t_imgs		tex;
+	t_imgs		imgs[4];
 	t_id		id;
 	t_map		map;
 	t_player	player;

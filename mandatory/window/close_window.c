@@ -6,7 +6,7 @@
 /*   By: clorcery <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 10:48:31 by clorcery          #+#    #+#             */
-/*   Updated: 2023/01/15 17:02:05 by clorcery         ###   ########.fr       */
+/*   Updated: 2023/01/15 18:18:26 by mcloarec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	ft_destroy_images(t_data *data)
 {
 	if (data->display.img != NULL)
 		mlx_destroy_image(data->mlx, data->display.img);
-	if (data->imgs.no != NULL)
-		mlx_destroy_image(data->mlx, data->imgs.no);
-	if (data->imgs.so != NULL)
-		mlx_destroy_image(data->mlx, data->imgs.so);
-	if (data->imgs.we != NULL)
-		mlx_destroy_image(data->mlx, data->imgs.we);
-	if (data->imgs.ea != NULL)
-		mlx_destroy_image(data->mlx, data->imgs.ea);
+	if (data->imgs[0].img != NULL)
+		mlx_destroy_image(data->mlx, data->imgs[0].img);
+	if (data->imgs[1].img != NULL)
+		mlx_destroy_image(data->mlx, data->imgs[1].img);
+	if (data->imgs[2].img != NULL)
+		mlx_destroy_image(data->mlx, data->imgs[2].img);
+	if (data->imgs[3].img != NULL)
+		mlx_destroy_image(data->mlx, data->imgs[3].img);
 }
 
 int	ft_close(t_data *data)

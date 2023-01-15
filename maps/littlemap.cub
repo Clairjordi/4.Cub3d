@@ -1,10 +1,10 @@
-NO ./textures/bg.xpm
+NO ./textures/mos_no.xpm
 SO ./textures/mos_so.xpm
 EA ./textures/mos_ea.xpm
 WE ./textures/mos_we.xpm
 
-C 0, 201, 255
-F 227, 213, 154
+C 0,201,255
+F 227,213,154
 
 111
 1N1
