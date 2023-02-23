@@ -1,56 +1,11 @@
-CUB3D:
+#Cub3D:
 
-nb argument < 1 et > 3
-ok - .cub = error (autant fichier que directory)
-ok - file.png = error
-ok - lol.cub.c = error (car .c et non .cub)
-ok - ..cub = valide (fichier inexistant si pas creer avant)
+Projet Ecole 42:
+(en groupe)
 
+Projet graphique en 3D utilisant le Raycasting (c'est une technique de rendu qui, à partir d'une carte en 2D, va afficher 
+en temps réel un environnement qui à l'apparence d'une 3D rudimentaire).
+Le but du projet est donc d'afficher des murs correctement et de pouvoir se déplacer sur la map(W, A, S, D). Possibilité de tourner la camera (flêche droite et gauche)
+Utilisation de la lib graphique fourni par 42 : la MiniLibx.
 
-
-VERIFICATION PARSING:
-
-fichier vide
-
-ID:
-		AVANT de mettre dans id : 
-			ok - verifier si 1ere lettre ok
-			ok - path/color = pas de txt en fin ou debut de fichier ex : "    NO[...]" ou 										     "fanfan[..]"
-			ok - path/color = verifier que id bien ecris
-			ok - path/color = pas d'espace avant identifier
-			ok - path/color = value id vide
-			ok - path = verifier si path bien ecris
-			ok - color = verifier si c'est un chiffre
-			ok - color = pas plusieurs virgule
-			ok - color = pas de virgule au debut ou a la fin
-			ok - color = possible espace avant apres au milieu (avec chiffre RGB valide)
-			ok - color = espace a la place d'une valeur RGB ou entre chiffre
-			
-
-
-		AU MOMENT DE METTRE DANS ID:
-			ok - color = verifier si c'est bien un chiffre entre 0 et 255
-			ok - color = trop ou pas assez de valeur
-			ok - color = verification des doublons
-			
-			ok - path = ext path_file doit etre en xpm
-			ok - path = verification des doublons
-
-     ok - verifier que tous les identifiers sont remplis
-     si ID pas tous mis alors erreur
-
-MAP:
-	espace dans la map
-	verifier si les caracteres ne sont seulement : 1, 0, N, S, E ou W
-	Seulement des 1 pour les murs
-	Verifier qu'il y ai une lettre de depart
-	verifier qu'il n'y ai des doublons de depart
-	murs du haut et du bas fermés
-	murs des cotes fermés
-	murs non egaux :    111       doit etre fermés
-			      101101
-			      111111
-	pas de ligne que d'espace entre les ID et la MAP + pas a la fin du fichier
-	
-	
-	
+./cub3d maps/[maps.ber]
