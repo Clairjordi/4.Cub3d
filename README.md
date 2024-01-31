@@ -1,14 +1,14 @@
 # Cub3d
 
-Projet Ecole 42:
-(en groupe)
+School Project 42: (in a group)
 
-Projet graphique en 3D utilisant le Raycasting (c'est une technique de rendu qui, à partir d'une carte en 2D, va afficher 
-en temps réel un environnement qui à l'apparence d'une 3D rudimentaire).
-Le but du projet est donc d'afficher des murs correctement et de pouvoir se déplacer sur la map(W, A, S, D). Possibilité de tourner la camera (flêche droite et gauche)
-Utilisation de la lib graphique fourni par 42 : la MiniLibx.
+3D graphics project using Raycasting (this is a rendering technique which, from a 2D map, will display
+in real time an environment which has the appearance of a rudimentary 3D).
+The goal of the project is therefore to display walls correctly and to be able to move around on the map (W, A, S, D). Possibility of rotating the camera (right and left arrows)
+Use of the graphics lib provided by 42: MiniLibx.
 
-./cub3d maps/[maps.ber]
+## For launch
+```./cub3d maps/[maps.ber]```
 
 ![Screenshot from 2023-02-24 16-58-26](https://user-images.githubusercontent.com/88725985/221226730-294f2a7c-a5cc-4433-b0c9-9ac0b5f25938.png)
 
