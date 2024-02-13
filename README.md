@@ -1,6 +1,6 @@
 # Cub3d
 
-School Project 42: (in a group)
+(4/7) School Project 42: (in a group)
 
 3D graphics project using Raycasting (this is a rendering technique which, from a 2D map, will display
 in real time an environment which has the appearance of a rudimentary 3D).
